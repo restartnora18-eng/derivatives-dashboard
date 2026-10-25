@@ -9,6 +9,7 @@ from pathlib import Path
 
 import collect_funding
 import collect_history
+import collect_oi
 from collect_funding import atomic_text, parse_time, serialize, utc_now
 
 ROOT = Path(__file__).resolve().parent
@@ -49,13 +50,19 @@ def update(root=ROOT, force_history=False):
         except Exception as exc:
             report["history"] = "failed"
             report["errors"].append({"module": "history", "type": type(exc).__name__})
+    try:
+        oi = collect_oi.collect(root)
+        report["oi"] = "available" if any(s["status"] == "ok" for s in oi["states"].values()) else "failed"
+    except Exception as exc:
+        report["oi"] = "failed"
+        report["errors"].append({"module":"oi", "type":type(exc).__name__})
     atomic_text(root / "data/cloud-status.json", serialize(report))
     return report
 
 
 def summary(report):
     lines = ["## 衍生观察云端更新", "", f"- UTC: {report['attempted_at']}",
-             f"- 当前费率: {report['funding']}", f"- 已结算历史: {report['history']}",
+             f"- 当前费率: {report['funding']}", f"- 未平仓量: {report.get('oi', '尚未运行')}", f"- 已结算历史: {report['history']}",
              "- 部分交易所受限时，网页会保留相应状态；不绕过限制。", ""]
     for module in ("funding", "history"):
         for venue, state in report.get(module + "_venues", {}).items():
@@ -72,7 +79,7 @@ def main():
     if args.check_health:
         report = json.loads((ROOT / "data/cloud-status.json").read_text(encoding="utf-8"))
         print(summary(report))
-        return int(report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
+        return int(report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
     report = update(force_history=args.force_history)
     message = summary(report)
     print(message)

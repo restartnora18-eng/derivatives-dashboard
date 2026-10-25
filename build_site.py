@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PUBLIC_FILES = (
     "index.html", "styles.css", "app.js", "snapshot.js", "funding-data.js",
-    "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
+    "oi-data.js", "oi-ui.js", "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
 )
 
 

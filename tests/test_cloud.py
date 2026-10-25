@@ -11,6 +11,11 @@ import collect_funding
 
 
 class CloudTests(unittest.TestCase):
+    def setUp(self):
+        patcher = patch.object(cloud_update.collect_oi, "collect", return_value={"states":{"BTC":{"status":"ok"}}})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_static_build_excludes_collectors_audits_and_private_extra_files(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
