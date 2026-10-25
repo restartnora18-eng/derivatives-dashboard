@@ -1,4 +1,6 @@
 import tempfile
+import json
+from pathlib import Path
 import unittest
 from datetime import datetime,timezone,timedelta
 from unittest.mock import patch
@@ -7,13 +9,22 @@ from collect_funding import DataError,utc_now
 
 def instrument(symbol='BTC',days=30):
  now=datetime.now(timezone.utc)
- return {'instId':symbol+'-USDT-TEST'+str(days),'instFamily':symbol+'-USDT','instType':'FUTURES','settleCcy':'USDT','ctType':'linear','state':'live','expTime':str(int((now+timedelta(days=days)).timestamp()*1000))}
+ return {'instId':symbol+'-USD-TEST'+str(days),'instFamily':symbol+'-USD','instType':'FUTURES','settleCcy':symbol,'ctType':'inverse','state':'live','expTime':str(int((now+timedelta(days=days)).timestamp()*1000))}
 def pair(inst,price=101,index=100):
  t=str(int(datetime.now(timezone.utc).timestamp()*1000));symbol=inst['instId'].split('-')[0]
- return {'instId':inst['instId'],'instType':'FUTURES','markPx':str(price),'ts':t},{'instId':symbol+'-USDT','idxPx':str(index),'ts':t}
+ return {'instId':inst['instId'],'instType':'FUTURES','markPx':str(price),'ts':t},{'instId':symbol+'-USD','idxPx':str(index),'ts':t}
 class FuturesTests(unittest.TestCase):
+ def test_recorded_live_usd_inverse_response_is_selected_without_usdt_mixing(self):
+  fixture=json.loads((Path(__file__).parent/'fixtures/okx-expiry-instruments.json').read_text())
+  for symbol in ('BTC','ETH'):
+   selected=collect_futures.select_contracts(fixture[symbol],symbol,'2026-10-25T10:00:00Z')
+   self.assertEqual(len(selected),4)
+   self.assertTrue(all(r['ctType']=='inverse' and r['settleCcy']==symbol for r in selected))
+   wrong=dict(selected[0],instFamily=symbol+'-USDT',settleCcy='USDT',ctType='linear')
+   self.assertEqual(collect_futures.select_contracts({'code':'0','data':[wrong]},symbol,'2026-10-25T10:00:00Z'),[])
+
  def test_selection_excludes_wrong_settlement_expired_and_caps_nearest_four(self):
-  items=[instrument(days=d) for d in [180,90,30,14,7,-1]];wrong=instrument();wrong['settleCcy']='BTC';items.append(wrong)
+  items=[instrument(days=d) for d in [180,90,30,14,7,-1]];wrong=instrument();wrong['settleCcy']='USDT';items.append(wrong)
   selected=collect_futures.select_contracts({'code':'0','data':items},'BTC',utc_now())
   self.assertEqual(len(selected),4)
   self.assertTrue(selected[0]['instId'].endswith('7'));self.assertTrue(selected[-1]['instId'].endswith('90'))
@@ -28,7 +39,7 @@ class FuturesTests(unittest.TestCase):
   inst=collect_futures.select_contracts({'code':'0','data':[instrument()]},'BTC',utc_now())[0]
   for kind in ['mismatch','zero','skew','nan']:
    mark,index=pair(inst)
-   if kind=='mismatch':index['instId']='BTC-USD'
+   if kind=='mismatch':index['instId']='BTC-USDT'
    if kind=='zero':index['idxPx']='0'
    if kind=='nan':mark['markPx']='NaN'
    if kind=='skew':index['ts']=str(int(index['ts'])-150000)

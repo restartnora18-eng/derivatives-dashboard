@@ -1,0 +1,120 @@
+{
+  "BTC": {
+    "code": "0",
+    "data": [
+      {
+        "instId": "BTC-USD-261030",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1793347200000"
+      },
+      {
+        "instId": "BTC-USD-261127",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1795766400000"
+      },
+      {
+        "instId": "BTC-USD-261225",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1798185600000"
+      },
+      {
+        "instId": "BTC-USD-270326",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1806048000000"
+      },
+      {
+        "instId": "BTC-USD-270625",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1813910400000"
+      },
+      {
+        "instId": "BTC-USD-270924",
+        "instFamily": "BTC-USD",
+        "instType": "FUTURES",
+        "settleCcy": "BTC",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1821772800000"
+      }
+    ]
+  },
+  "ETH": {
+    "code": "0",
+    "data": [
+      {
+        "instId": "ETH-USD-261030",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1793347200000"
+      },
+      {
+        "instId": "ETH-USD-261127",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1795766400000"
+      },
+      {
+        "instId": "ETH-USD-261225",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1798185600000"
+      },
+      {
+        "instId": "ETH-USD-270326",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1806048000000"
+      },
+      {
+        "instId": "ETH-USD-270625",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1813910400000"
+      },
+      {
+        "instId": "ETH-USD-270924",
+        "instFamily": "ETH-USD",
+        "instType": "FUTURES",
+        "settleCcy": "ETH",
+        "ctType": "inverse",
+        "state": "live",
+        "expTime": "1821772800000"
+      }
+    ]
+  }
+}

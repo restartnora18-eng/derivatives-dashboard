@@ -15,14 +15,16 @@ def select_contracts(payload,symbol,now):
     selected={}
     for r in rows(payload):
         expiry=timestamp_ms(r.get('expTime'))
-        if (r.get('instType')=='FUTURES' and r.get('instFamily')==symbol+'-USDT'
-            and r.get('settleCcy')=='USDT' and r.get('ctType')=='linear' and r.get('state')=='live'
+        if (r.get('instType')=='FUTURES' and r.get('instFamily')==symbol+'-USD'
+            and r.get('settleCcy')==symbol and r.get('ctType')=='inverse' and r.get('state')=='live'
             and expiry and parse_time(expiry)>parse_time(now)):
             selected[r['instId']]=dict(r,expiry=expiry)
     return sorted(selected.values(),key=lambda r:r['expiry'])[:4]
 
 def normalize(instrument,mark,index,symbol,now):
-    if mark.get('instId')!=instrument['instId'] or mark.get('instType')!='FUTURES' or index.get('instId')!=symbol+'-USDT':
+    if instrument.get('instFamily')!=symbol+'-USD' or instrument.get('settleCcy')!=symbol or instrument.get('ctType')!='inverse':
+        raise DataError('contract_mismatch','仅支持 USD 计价、同币种结算的反向交割合约')
+    if mark.get('instId')!=instrument['instId'] or mark.get('instType')!='FUTURES' or index.get('instId')!=symbol+'-USD':
         raise DataError('contract_mismatch','合约或指数不匹配')
     price=finite_number(mark.get('markPx'));spot=finite_number(index.get('idxPx'))
     if price<=0 or spot<=0:raise DataError('invalid_price','价格必须为正')
@@ -36,7 +38,7 @@ def normalize(instrument,mark,index,symbol,now):
     observed=max(mt,it);days=(parse_time(instrument['expiry'])-parse_time(observed)).total_seconds()/86400
     if days<=0:raise DataError('expired','合约已到期')
     premium=(price/spot-1)*100
-    return {'symbol':symbol,'contract':instrument['instId'],'venue':'okx','expiry':instrument['expiry'],
+    return {'symbol':symbol,'contract':instrument['instId'],'venue':'okx','quote_ccy':'USD','settle_ccy':symbol,'contract_type':'inverse','index_id':symbol+'-USD','expiry':instrument['expiry'],
             'time':observed,'mark_time':mt,'index_time':it,'fetched_at':now,'skew_seconds':skew,
             'mark':price,'index':spot,'spread':price-spot,'basis_pct':premium,'days_remaining':days,
             'annualized_pct':premium*365/days if days>=1 else None,'near_expiry':days<1}
@@ -49,14 +51,14 @@ def collect(root=ROOT):
         errors=[];received=[]
         try:
             if blocked:raise DataError('access_restricted','访问受限，跳过重复请求')
-            instruments=get_json(API+'public/instruments',{'instType':'FUTURES','instFamily':symbol+'-USDT'})
+            instruments=get_json(API+'public/instruments',{'instType':'FUTURES','instFamily':symbol+'-USD'})
             raw[symbol]={'instruments':instruments}
             contracts=select_contracts(instruments,symbol,now)
-            if not contracts:raise DataError('no_contracts','暂无符合口径的未到期 USDT 交割合约')
-            marks_payload=get_json(API+'public/mark-price',{'instType':'FUTURES','instFamily':symbol+'-USDT'})
+            if not contracts:raise DataError('no_contracts','暂无符合口径的未到期 USD 计价币本位交割合约')
+            marks_payload=get_json(API+'public/mark-price',{'instType':'FUTURES','instFamily':symbol+'-USD'})
             raw[symbol]['marks']=marks_payload;marks=rows(marks_payload)
-            index_payload=get_json(API+'market/index-tickers',{'instId':symbol+'-USDT'})
-            raw[symbol]['index']=index_payload;indices=[r for r in rows(index_payload) if r.get('instId')==symbol+'-USDT']
+            index_payload=get_json(API+'market/index-tickers',{'instId':symbol+'-USD'})
+            raw[symbol]['index']=index_payload;indices=[r for r in rows(index_payload) if r.get('instId')==symbol+'-USD']
             if len(indices)!=1:raise DataError('index_mismatch','指数缺失或重复')
             for instrument in contracts:
                 try:
