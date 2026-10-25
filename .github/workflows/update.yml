@@ -15,6 +15,7 @@ on:
       - 'summary-ui.js'
       - 'options-ui.js'
       - 'orderbook-ui.js'
+      - 'book-simulator.js'
       - 'liquidations-ui.js'
       - 'data-model.js'
       - 'history-chart.js'
