@@ -25,3 +25,11 @@ test('unit and symbol switches update the chart and current observation',()=>{
   r.inputs['#oi-unit'].value='contracts';r.inputs['#oi-unit'].change();assert.match(r.html(),/0.00%/);assert.match(r.html(),/单位 张/);
   r.inputs['#oi-symbol'].value='ETH';r.inputs['#oi-symbol'].change();assert.match(r.html(),/暂无区间数据/);
 });
+test('price and OI panels share x coordinates while retaining independent units',()=>{
+  const context={window:{},date:v=>v,esc:String};vm.runInNewContext(fs.readFileSync('oi-ui.js','utf8'),context);
+  const bounds=[now-36e5,now];
+  const oi=context.window.OIChart([row(0,90000)],'usd','OI','USD',bounds,'green');
+  const price=context.window.OIChart([{time:new Date(now).toISOString(),price:80000}],'price','价格','USDT',bounds,'blue');
+  assert.match(oi,/cx="925"/);assert.match(price,/cx="925"/);assert.match(price,/80000|80,000/);assert.match(price,/USDT/);
+  assert.match(context.window.OIChart([],'price','价格','USDT',bounds,'blue'),/暂无区间数据/);
+});

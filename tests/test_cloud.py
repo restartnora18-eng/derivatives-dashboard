@@ -13,6 +13,9 @@ import collect_funding
 class CloudTests(unittest.TestCase):
     def setUp(self):
         patcher = patch.object(cloud_update.collect_oi, "collect", return_value={"states":{"BTC":{"status":"ok"}}})
+        price_patcher = patch.object(cloud_update.collect_price, "collect", return_value={"states":{"BTC":{"status":"ok"}}})
+        price_patcher.start()
+        self.addCleanup(price_patcher.stop)
         patcher.start()
         self.addCleanup(patcher.stop)
 

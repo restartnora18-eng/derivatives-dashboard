@@ -133,3 +133,8 @@ node --check app.js
 ## OI 第一版（阶段 04）
 
 新增 OKX BTC/ETH USDT 永续持仓量：oi（张）、oiCcy（币）、oiUsd（USD）分别展示。官方字段说明：https://app.okx.com/docs-v5/zh/#public-data-rest-api-get-open-interest 。每次云端更新额外发送 2 个公开 GET 请求，无 API 密钥。按小时积累近 30 天真实观测，7/30 天切换，首末变化不冒充 24 小时变化；缺失超过 2 小时断线，首次只有一个点时显示积累中。失败保留旧数据并显示状态与过期标记。单所 OI 不代表全市场，也不能单独判断多空方向。尚未接入其他交易所 OI 或过去历史回补。
+
+
+## 阶段 05：价格与 OI 对照
+
+新增 OKX BTC/ETH USDT 永续标记价格（markPx，单位 USDT），官方接口说明：https://app.okx.com/docs-v5/zh/#public-data-rest-api-get-mark-price 。每次云端更新额外 2 个公开 GET；保留 30 天观测，价格和 OI 使用共同横轴、独立纵轴上下展示。不是现货或最新成交价。价格失败不影响 OI 保存；各自显示采集状态、数据时间与过期标记，历史缺口不补值。上线前的 OI 记录不补推价格；新价格从首次真实采集开始。
