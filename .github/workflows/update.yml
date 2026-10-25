@@ -14,6 +14,7 @@ on:
       - 'futures-ui.js'
       - 'summary-ui.js'
       - 'percentile-ui.js'
+      - 'analysis-export.js'
       - 'options-ui.js'
       - 'option-positions-ui.js'
       - 'orderbook-ui.js'
