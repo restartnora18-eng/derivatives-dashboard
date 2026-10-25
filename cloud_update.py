@@ -11,6 +11,7 @@ import collect_funding
 import collect_history
 import collect_oi
 import collect_price
+import collect_basis
 from collect_funding import atomic_text, parse_time, serialize, utc_now
 
 ROOT = Path(__file__).resolve().parent
@@ -63,13 +64,19 @@ def update(root=ROOT, force_history=False):
     except Exception as exc:
         report["price"] = "failed"
         report["errors"].append({"module":"price", "type":type(exc).__name__})
+    try:
+        basis = collect_basis.collect(root)
+        report["basis"] = "available" if any(s["status"] == "ok" for s in basis["states"].values()) else "failed"
+    except Exception as exc:
+        report["basis"] = "failed"
+        report["errors"].append({"module":"basis", "type":type(exc).__name__})
     atomic_text(root / "data/cloud-status.json", serialize(report))
     return report
 
 
 def summary(report):
     lines = ["## 衍生观察云端更新", "", f"- UTC: {report['attempted_at']}",
-             f"- 当前费率: {report['funding']}", f"- 未平仓量: {report.get('oi', '尚未运行')}", f"- 标记价格: {report.get('price', '尚未运行')}", f"- 已结算历史: {report['history']}",
+             f"- 当前费率: {report['funding']}", f"- 未平仓量: {report.get('oi', '尚未运行')}", f"- 标记价格: {report.get('price', '尚未运行')}", f"- 永续溢价: {report.get('basis', '尚未运行')}", f"- 已结算历史: {report['history']}",
              "- 部分交易所受限时，网页会保留相应状态；不绕过限制。", ""]
     for module in ("funding", "history"):
         for venue, state in report.get(module + "_venues", {}).items():
@@ -86,7 +93,7 @@ def main():
     if args.check_health:
         report = json.loads((ROOT / "data/cloud-status.json").read_text(encoding="utf-8"))
         print(summary(report))
-        return int(report.get("price") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
+        return int(report.get("basis") == "failed" or report.get("price") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
     report = update(force_history=args.force_history)
     message = summary(report)
     print(message)

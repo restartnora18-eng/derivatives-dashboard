@@ -41,3 +41,8 @@
 ## 阶段 05：价格与 OI 对照
 
 新增 OKX BTC/ETH USDT 永续标记价格（markPx，单位 USDT），官方接口说明：https://app.okx.com/docs-v5/zh/#public-data-rest-api-get-mark-price 。每次云端更新额外 2 个公开 GET；保留 30 天观测，价格和 OI 使用共同横轴、独立纵轴上下展示。不是现货或最新成交价。价格失败不影响 OI 保存；各自显示采集状态、数据时间与过期标记，历史缺口不补值。上线前的 OI 记录不补推价格；新价格从首次真实采集开始。
+
+
+## 阶段 06：永续溢价
+
+基差页面先接入 OKX BTC/ETH USDT 永续溢价：（markPx / idxPx - 1）× 100%，同时展示 USDT 价差。复用本次成功采集的标记价格，每次云端刷新额外 2 个指数 GET，不使用账户或密钥。官方指数接口：https://app.okx.com/docs-v5/zh/#market-data-rest-api-get-index-tickers 。仅配对相同标的 USDT 价格，价格年龄不超过 180 秒，时间差不超过 120 秒，失败保留旧观测并标记状态。保留近 30 天，7/30 天选择，缺口断线与零溢价参考线。永续无到期日，本阶段不做到期年化、期限结构或套利收益推算。新增 collect_basis.py（采集与校验）、basis-data.js（浏览器快照）、basis-ui.js（展示）；cloud_update.py 调用采集，build_site.py 与工作流负责保存和部署。

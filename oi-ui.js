@@ -1,15 +1,15 @@
 'use strict';
 // Shared time bounds align both panels without inventing matched timestamps.
-window.OIChart = function(rows,key,title,unit,bounds,color) {
+window.OIChart = function(rows,key,title,unit,bounds,color,options={}) {
   if(!rows.length)return '<div class="empty">暂无区间数据，等待云端采集。</div>';
-  const fmt=n=>Number(n).toLocaleString('zh-CN',{maximumFractionDigits:2});
+  const fmt=n=>Number(n).toLocaleString('zh-CN',{maximumFractionDigits:options.digits??2});
   const times=rows.map(r=>Date.parse(r.time)), vals=rows.map(r=>r[key]);
-  const lo=Math.min(...vals),hi=Math.max(...vals),pad=(hi-lo)*.1||Math.max(hi*.01,1),min=lo-pad,max=hi+pad;
+  const lo=Math.min(...vals,...(options.zero?[0]:[])),hi=Math.max(...vals,...(options.zero?[0]:[])),pad=(hi-lo)*.1||Math.max(hi*.01,1),min=lo-pad,max=hi+pad;
   const x=t=>100+(t-bounds[0])/(bounds[1]-bounds[0]||1)*825,y=v=>235-(v-min)/(max-min)*200;
   const segments=[];let segment=[];
   rows.forEach((r,i)=>{if(i && times[i]-times[i-1]>7200000){segments.push(segment);segment=[];}segment.push(`${x(times[i])},${y(r[key])}`);});segments.push(segment);
   const ticks=Array.from({length:4},(_,i)=>{const v=min+(max-min)*i/3;return `<line x1="100" x2="925" y1="${y(v)}" y2="${y(v)}" stroke="currentColor" opacity=".12"/><text x="3" y="${y(v)}" fill="currentColor" font-size="11">${fmt(v)}</text>`;}).join('');
-  return `<svg viewBox="0 0 950 280" role="img" aria-label="${title}" style="width:100%;color:var(--muted,#99aaa0)">${ticks}${segments.map(s=>`<polyline points="${s.join(' ')}" fill="none" stroke="${color}" stroke-width="2"/>`).join('')}${rows.map((r,i)=>`<circle cx="${x(times[i])}" cy="${y(r[key])}" r="3" fill="${color}"><title>${date(r.time)} · ${fmt(r[key])} ${unit}</title></circle>`).join('')}<text x="100" y="267" fill="currentColor" font-size="11">${esc(date(new Date(bounds[0]).toISOString()))}</text><text x="925" y="267" text-anchor="end" fill="currentColor" font-size="11">${esc(date(new Date(bounds[1]).toISOString()))}</text></svg>`;
+  return `<svg viewBox="0 0 950 280" role="img" aria-label="${title}" style="width:100%;color:var(--muted,#99aaa0)">${ticks}${options.zero?`<line x1="100" x2="925" y1="${y(0)}" y2="${y(0)}" stroke="currentColor" stroke-dasharray="5 4" opacity=".5"/>`:""}${segments.map(s=>`<polyline points="${s.join(' ')}" fill="none" stroke="${color}" stroke-width="2"/>`).join('')}${rows.map((r,i)=>`<circle cx="${x(times[i])}" cy="${y(r[key])}" r="3" fill="${color}"><title>${date(r.time)} · ${fmt(r[key])} ${unit}</title></circle>`).join('')}<text x="100" y="267" fill="currentColor" font-size="11">${esc(date(new Date(bounds[0]).toISOString()))}</text><text x="925" y="267" text-anchor="end" fill="currentColor" font-size="11">${esc(date(new Date(bounds[1]).toISOString()))}</text></svg>`;
 };
 
 window.renderOI = function(target) {
