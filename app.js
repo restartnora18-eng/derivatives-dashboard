@@ -47,6 +47,13 @@ function render() {
   document.querySelector('#methodology').textContent = isLegacy ?
     '演示数据沿用原项目 8 小时年化假设，实际周期未核验。' :
     '年化 = 周期费率 × 24 ÷ 周期小时数 × 365。仅作线性外推；周期未知不计算，过期或异常记录不参与有效排名。';
+  if (id === 'orderbook') {
+    document.querySelector('#time').textContent = '盘口尝试时间：' + date(window.ORDERBOOK_DATA?.attempted_at);
+    document.querySelector('#notice-label').textContent = '◷ 盘口小时快照 · 非实时盘口';
+    document.querySelector('#methodology').textContent = 'USDT永续最多400档/侧；范围不足只展示观察下限，不计算完整区间失衡。';
+    window.renderOrderbook(content);
+    return;
+  }
   if (id === 'options') {
     document.querySelector('#time').textContent = '期权尝试时间：' + date(window.OPTIONS_DATA?.attempted_at);
     document.querySelector('#notice-label').textContent = '◷ 期权小时快照 · 刷新页面读取最新数据';
@@ -98,7 +105,7 @@ function render() {
     <div class="controls"><input id="search" type="search" aria-label="搜索标的或合约" placeholder="搜索 BTC、ETH 或完整合约…"><select id="venue" aria-label="交易所"><option value="all">全部交易所</option>${FundingModel.venueNames.map(v=>`<option value="${v}">${v.toUpperCase()}</option>`).join('')}</select><select id="sort" aria-label="排序"><option value="high">年化：从高到低</option><option value="low">年化：从低到高</option><option value="name">标的：A—Z</option></select></div>
     <div id="count" class="hint" aria-live="polite"></div><div class="tablewrap"><table><thead><tr><th>排名</th><th>标的 / 合约</th><th>交易所</th><th>周期费率</th><th>周期</th><th>年化</th><th>口径 / 质量</th><th>查看</th></tr></thead><tbody id="rows"></tbody></table></div><div id="pager" class="controls"></div><div id="detail" class="detail hidden"></div></section>
     <section id="history-panel" class="panel"></section>
-    ${id==='overview'?`<div class="panelhead" style="margin-bottom:16px"><h2>分析模块</h2><span class="hint">循序接入 · 每个指标都可追溯</span></div><div class="modules">${modules.slice(1).map(([i,icon,n,d],k)=>`<a class="module" href="#${i}"><span class="number">0${k+1} / ${icon}</span><span class="status">${i==='funding'?'快照与历史已接入':i==='oi'?'小时快照已接入':i==='basis'?'溢价与交割已接入':i==='options'?'IV 与偏斜已接入':'待接入'}</span><h3>${n} ↗</h3><p>${d}</p></a>`).join('')}</div>`:''}`;
+    ${id==='overview'?`<div class="panelhead" style="margin-bottom:16px"><h2>分析模块</h2><span class="hint">循序接入 · 每个指标都可追溯</span></div><div class="modules">${modules.slice(1).map(([i,icon,n,d],k)=>`<a class="module" href="#${i}"><span class="number">0${k+1} / ${icon}</span><span class="status">${i==='funding'?'快照与历史已接入':i==='oi'?'小时快照已接入':i==='basis'?'溢价与交割已接入':i==='options'?'IV 与偏斜已接入':i==='orderbook'?'盘口快照已接入':'待接入'}</span><h3>${n} ↗</h3><p>${d}</p></a>`).join('')}</div>`:''}`;
   if (id==='overview') window.renderSummary(document.querySelector('#summary-panel'));
   document.querySelector('#dataset').onchange = event => {dataset=event.target.value;render();};
   let page=0;
