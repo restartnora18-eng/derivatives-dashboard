@@ -1,0 +1,54 @@
+{
+  "attempted_at": "2026-10-25T04:40:49.325Z",
+  "funding": "available",
+  "history": "skipped",
+  "errors": [],
+  "funding_venues": {
+    "binance": {
+      "status": "failed",
+      "expected": 2,
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_451",
+          "message": "公共接口返回 HTTP 451"
+        },
+        {
+          "base": "ETH",
+          "code": "http_451",
+          "message": "同一交易所访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "bybit": {
+      "status": "failed",
+      "expected": 2,
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_403",
+          "message": "公共接口返回 HTTP 403"
+        },
+        {
+          "base": "ETH",
+          "code": "http_403",
+          "message": "同一交易所访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "okx": {
+      "status": "ok",
+      "expected": 2,
+      "received": 2,
+      "errors": []
+    },
+    "bitget": {
+      "status": "ok",
+      "expected": 2,
+      "received": 2,
+      "errors": []
+    }
+  }
+}

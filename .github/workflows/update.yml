@@ -1,0 +1,129 @@
+name: Refresh derivatives data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.py'
+      - '.github/workflows/update.yml'
+      - 'index.html'
+      - 'styles.css'
+      - 'app.js'
+      - 'data-model.js'
+      - 'history-chart.js'
+      - 'history-ui.js'
+      - 'runtime-config.js'
+  schedule:
+    # Every hour at :17 UTC, away from the busiest top-of-hour slot.
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      refresh_history:
+        description: 'Also refresh settled history now'
+        type: boolean
+        default: false
+
+# Set repository variable ENABLE_PAGES=true only after configuring Pages.
+# A dedicated deploy job holds Pages permissions; collection only writes data.
+permissions:
+  contents: read
+
+concurrency:
+  group: derivatives-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    outputs:
+      unhealthy: ${{ steps.health.outputs.unhealthy }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check code before collecting
+        run: |
+          python -B -m unittest discover -s tests -v
+          node --check app.js
+          node --check history-ui.js
+          node --test tests/*.cjs
+      - name: Collect public data once
+        env:
+          FORCE_HISTORY: ${{ inputs.refresh_history && 'true' || 'false' }}
+        run: |
+          if [ "$FORCE_HISTORY" = 'true' ]; then
+            python -B cloud_update.py --force-history
+          else
+            python -B cloud_update.py
+          fi
+      - name: Build only public static files
+        run: python -B build_site.py --hosted
+      - name: Save snapshots and statuses
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/ funding-data.js history-data.js
+          if ! git diff --staged --quiet; then
+            git commit -m 'chore: refresh derivatives data'
+            git push
+          fi
+      - name: Check collection health without losing failure status files
+        id: health
+        run: |
+          if python -B cloud_update.py --check-health; then
+            echo 'unhealthy=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'unhealthy=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Upload static site for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-static
+          path: dist/
+          include-hidden-files: true
+          retention-days: 7
+      - name: Upload Pages package when enabled
+        if: vars.ENABLE_PAGES == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/
+
+  deploy:
+    if: vars.ENABLE_PAGES == 'true'
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy saved static package
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  health:
+    needs: [update, deploy]
+    if: always() && needs.update.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Surface collection or deployment failures
+        env:
+          UNHEALTHY: ${{ needs.update.outputs.unhealthy }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+        run: |
+          if [ "$UNHEALTHY" = 'true' ] || [ "$DEPLOY_RESULT" = 'failure' ]; then
+            echo 'Data collection or deployment needs attention; saved statuses are retained.'
+            exit 1
+          fi
