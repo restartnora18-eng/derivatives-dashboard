@@ -7,9 +7,9 @@ window.FUNDING_HISTORY = {
       "symbol": "BTC-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:11.459Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.230Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -657,9 +657,9 @@ window.FUNDING_HISTORY = {
       "symbol": "ETH-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:12.245Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.435Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -1307,9 +1307,9 @@ window.FUNDING_HISTORY = {
       "symbol": "BTCUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:13.060Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.624Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -1957,9 +1957,9 @@ window.FUNDING_HISTORY = {
       "symbol": "ETHUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:13.997Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.807Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -2604,10 +2604,10 @@ window.FUNDING_HISTORY = {
   },
   "last_attempt": {
     "schema_version": 1,
-    "collected_at": "2026-10-25T04:11:13.997Z",
+    "collected_at": "2026-10-25T05:07:43.807Z",
     "days": 30,
-    "requested_start": "2026-09-25T04:11:08.621Z",
-    "requested_end": "2026-10-25T04:11:08.621Z",
+    "requested_start": "2026-09-25T05:07:42.989Z",
+    "requested_end": "2026-10-25T05:07:42.989Z",
     "venues": {
       "binance": {
         "status": "failed",

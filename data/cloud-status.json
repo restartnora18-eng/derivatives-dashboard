@@ -1,7 +1,7 @@
 {
-  "attempted_at": "2026-10-25T04:58:53.973Z",
+  "attempted_at": "2026-10-25T05:07:41.767Z",
   "funding": "available",
-  "history": "skipped",
+  "history": "available",
   "errors": [],
   "funding_venues": {
     "binance": {
@@ -48,6 +48,50 @@
       "status": "ok",
       "expected": 2,
       "received": 2,
+      "errors": []
+    }
+  },
+  "history_venues": {
+    "binance": {
+      "status": "failed",
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_451",
+          "message": "公共接口返回 HTTP 451"
+        },
+        {
+          "base": "ETH",
+          "code": "http_451",
+          "message": "访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "bybit": {
+      "status": "failed",
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_403",
+          "message": "公共接口返回 HTTP 403"
+        },
+        {
+          "base": "ETH",
+          "code": "http_403",
+          "message": "访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "okx": {
+      "status": "ok",
+      "received": 180,
+      "errors": []
+    },
+    "bitget": {
+      "status": "ok",
+      "received": 180,
       "errors": []
     }
   }

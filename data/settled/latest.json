@@ -7,9 +7,9 @@
       "symbol": "BTC-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:11.459Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.230Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -2381,9 +2381,9 @@
       "symbol": "ETH-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:12.245Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.435Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -4755,9 +4755,9 @@
       "symbol": "BTCUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:13.060Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.624Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -5859,7 +5859,7 @@
           "response": {
             "code": "00000",
             "msg": "success",
-            "requestTime": 1792901473218,
+            "requestTime": 1792904863534,
             "data": {
               "resultList": [
                 {
@@ -6374,9 +6374,9 @@
       "symbol": "ETHUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T04:11:13.997Z",
-      "requested_start": "2026-09-25T04:11:08.621Z",
-      "requested_end": "2026-10-25T04:11:08.621Z",
+      "collected_at": "2026-10-25T05:07:43.807Z",
+      "requested_start": "2026-09-25T05:07:42.989Z",
+      "requested_end": "2026-10-25T05:07:42.989Z",
       "points": [
         {
           "settled_at": "2026-09-25T08:00:00.000Z",
@@ -7478,7 +7478,7 @@
           "response": {
             "code": "00000",
             "msg": "success",
-            "requestTime": 1792901474213,
+            "requestTime": 1792904863723,
             "data": {
               "resultList": [
                 {
