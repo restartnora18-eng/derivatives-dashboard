@@ -41,7 +41,7 @@ def build_site(root=ROOT, hosted=False):
     references = References()
     references.feed((root / "index.html").read_text(encoding="utf-8"))
     allowed = set(PUBLIC_FILES) | {"runtime-config.js"}
-    if not set(references.assets) <= allowed:
+    if not {asset.split("?", 1)[0] for asset in references.assets} <= allowed:
         raise ValueError("网页引用了未列入发布清单的资源")
     with tempfile.TemporaryDirectory(prefix=".build-", dir=str(root)) as directory:
         stage = Path(directory)
