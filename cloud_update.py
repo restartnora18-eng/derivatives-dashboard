@@ -14,6 +14,7 @@ import collect_price
 import collect_basis
 import collect_futures
 import collect_options
+import collect_option_positions
 import collect_orderbook
 import collect_liquidations
 from collect_funding import atomic_text, parse_time, serialize, utc_now
@@ -87,6 +88,12 @@ def update(root=ROOT, force_history=False):
         report["options"] = "failed"
         report["errors"].append({"module":"options", "type":type(exc).__name__})
     try:
+        positions = collect_option_positions.collect(root)
+        report["option_positions"] = "available" if any(s["status"] == "ok" for s in positions["states"].values()) else "failed"
+    except Exception as exc:
+        report["option_positions"] = "failed"
+        report["errors"].append({"module":"option_positions", "type":type(exc).__name__})
+    try:
         book = collect_orderbook.collect(root)
         report["orderbook"] = "available" if any(s["status"] == "ok" for s in book["states"].values()) else "failed"
     except Exception as exc:
@@ -104,7 +111,7 @@ def update(root=ROOT, force_history=False):
 
 def summary(report):
     lines = ["## 衍生观察云端更新", "", f"- UTC: {report['attempted_at']}",
-             f"- 当前费率: {report['funding']}", f"- 未平仓量: {report.get('oi', '尚未运行')}", f"- 标记价格: {report.get('price', '尚未运行')}", f"- 永续溢价: {report.get('basis', '尚未运行')}", f"- 交割基差: {report.get('futures', '尚未运行')}", f"- 期权: {report.get('options', '尚未运行')}", f"- 盘口: {report.get('orderbook', '尚未运行')}", f"- 强平样本: {report.get('liquidations', '尚未运行')}", f"- 已结算历史: {report['history']}",
+             f"- 当前费率: {report['funding']}", f"- 未平仓量: {report.get('oi', '尚未运行')}", f"- 标记价格: {report.get('price', '尚未运行')}", f"- 永续溢价: {report.get('basis', '尚未运行')}", f"- 交割基差: {report.get('futures', '尚未运行')}", f"- 期权: {report.get('options', '尚未运行')}", f"- 期权持仓结构: {report.get('option_positions', '尚未运行')}", f"- 盘口: {report.get('orderbook', '尚未运行')}", f"- 强平样本: {report.get('liquidations', '尚未运行')}", f"- 已结算历史: {report['history']}",
              "- 部分交易所受限时，网页会保留相应状态；不绕过限制。", ""]
     for module in ("funding", "history"):
         for venue, state in report.get(module + "_venues", {}).items():
@@ -121,7 +128,7 @@ def main():
     if args.check_health:
         report = json.loads((ROOT / "data/cloud-status.json").read_text(encoding="utf-8"))
         print(summary(report))
-        return int(report.get("liquidations") == "failed" or report.get("orderbook") == "failed" or report.get("options") == "failed" or report.get("futures") == "failed" or report.get("basis") == "failed" or report.get("price") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
+        return int(report.get("option_positions") == "failed" or report.get("liquidations") == "failed" or report.get("orderbook") == "failed" or report.get("options") == "failed" or report.get("futures") == "failed" or report.get("basis") == "failed" or report.get("price") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
     report = update(force_history=args.force_history)
     message = summary(report)
     print(message)

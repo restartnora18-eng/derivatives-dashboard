@@ -14,3 +14,14 @@
 文件：`collect_options.py`采集与计算，`options-data.js`快照，`options-ui.js`页面，`summary-ui.js`总览。`cloud_update.py`和现有GitHub Actions按小时运行，无Mac常驻任务。
 
 官方字段参考：[OKX 期权定价](https://www.okx.com/docs-v5/en/#public-data-rest-api-get-option-market-data)。
+
+
+## 阶段13：期权持仓结构
+
+collect_option_positions.py每小时增加4个公开GET：BTC/ETH各自的public/instruments与public/open-interest（instType=OPTION、instFamily=BTC-USD或ETH-USD）。按在市未到期合约清单完整匹配，任一缺失不补零、失败保留旧快照。排除不在当前清单内的已到期等返回记录。
+
+使用oiCcy标的币数量，逐合约校验oi×ctVal×ctMult，不将期权乘数假定为1；同时核对币种、结算币、合约类型及正面值。来源时间3分钟内、全合约时间跨度最多120秒。Put/Call OI比=看跌币数量/看涨币数量，分母为0返回null。每个OI合约都有双方，比例不是成交量比、持有人方向、预测信号或做市商Gamma。
+
+最近快照含到期日汇总、匹配计数、单位值和输入指纹；指纹不是原始全链备份。近30天仅保存全当时在市合约的合计历史；到期/上市会改变统计集合，因此不是固定组合历史。独立于IV模块，不混用IV过滤合约清单。
+
+官方来源：https://www.okx.com/docs-v5/en/#public-data-rest-api-get-open-interest ，以及 https://github.com/okx/agent-skills/blob/github-main/skills/okx-cex-market/references/derivatives-commands.md 。
