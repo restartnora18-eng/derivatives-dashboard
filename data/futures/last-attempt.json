@@ -1,0 +1,39 @@
+{
+  "attempted_at": "2026-10-25T05:38:11.624Z",
+  "states": {
+    "BTC": {
+      "status": "failed",
+      "received": 0,
+      "errors": [
+        {
+          "code": "no_contracts"
+        }
+      ]
+    },
+    "ETH": {
+      "status": "failed",
+      "received": 0,
+      "errors": [
+        {
+          "code": "no_contracts"
+        }
+      ]
+    }
+  },
+  "raw": {
+    "BTC": {
+      "instruments": {
+        "code": "0",
+        "data": [],
+        "msg": ""
+      }
+    },
+    "ETH": {
+      "instruments": {
+        "code": "0",
+        "data": [],
+        "msg": ""
+      }
+    }
+  }
+}

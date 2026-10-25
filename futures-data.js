@@ -1,1 +1,1 @@
-window.FUTURES_DATA = {"attempted_at":null,"states":{},"snapshots":{},"records":[]};
+window.FUTURES_DATA = {"attempted_at": "2026-10-25T05:38:11.624Z", "states": {"BTC": {"status": "failed", "received": 0, "errors": [{"code": "no_contracts"}]}, "ETH": {"status": "failed", "received": 0, "errors": [{"code": "no_contracts"}]}}, "snapshots": {}, "records": []};
