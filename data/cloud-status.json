@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-25T05:24:50.005Z",
+  "attempted_at": "2026-10-25T05:29:44.383Z",
   "funding": "available",
   "history": "skipped",
   "errors": [],
@@ -52,5 +52,6 @@
     }
   },
   "oi": "available",
-  "price": "available"
+  "price": "available",
+  "basis": "available"
 }
