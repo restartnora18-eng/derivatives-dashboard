@@ -7,17 +7,10 @@ window.FUNDING_HISTORY = {
       "symbol": "BTC-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T05:07:43.230Z",
-      "requested_start": "2026-09-25T05:07:42.989Z",
-      "requested_end": "2026-10-25T05:07:42.989Z",
+      "collected_at": "2026-10-25T14:23:51.984Z",
+      "requested_start": "2026-09-25T14:23:51.739Z",
+      "requested_end": "2026-10-25T14:23:51.739Z",
       "points": [
-        {
-          "settled_at": "2026-09-25T08:00:00.000Z",
-          "rate_decimal": 7.18624451426e-05,
-          "rate_percent": 0.00718624451426,
-          "raw_rate": "0.0000718624451426",
-          "source_rate_field": "realizedRate"
-        },
         {
           "settled_at": "2026-09-25T16:00:00.000Z",
           "rate_decimal": 3.41625964238e-05,
@@ -640,11 +633,18 @@ window.FUNDING_HISTORY = {
           "rate_percent": 0.00218947520699,
           "raw_rate": "0.0000218947520699",
           "source_rate_field": "realizedRate"
+        },
+        {
+          "settled_at": "2026-10-25T08:00:00.000Z",
+          "rate_decimal": 9.43946190624e-05,
+          "rate_percent": 0.00943946190624,
+          "raw_rate": "0.0000943946190624",
+          "source_rate_field": "realizedRate"
         }
       ],
       "coverage": {
-        "first": "2026-09-25T08:00:00.000Z",
-        "last": "2026-10-25T00:00:00.000Z",
+        "first": "2026-09-25T16:00:00.000Z",
+        "last": "2026-10-25T08:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -657,17 +657,10 @@ window.FUNDING_HISTORY = {
       "symbol": "ETH-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T05:07:43.435Z",
-      "requested_start": "2026-09-25T05:07:42.989Z",
-      "requested_end": "2026-10-25T05:07:42.989Z",
+      "collected_at": "2026-10-25T14:23:52.185Z",
+      "requested_start": "2026-09-25T14:23:51.739Z",
+      "requested_end": "2026-10-25T14:23:51.739Z",
       "points": [
-        {
-          "settled_at": "2026-09-25T08:00:00.000Z",
-          "rate_decimal": 5.53081588177e-05,
-          "rate_percent": 0.00553081588177,
-          "raw_rate": "0.0000553081588177",
-          "source_rate_field": "realizedRate"
-        },
         {
           "settled_at": "2026-09-25T16:00:00.000Z",
           "rate_decimal": 4.806880535e-07,
@@ -1290,11 +1283,18 @@ window.FUNDING_HISTORY = {
           "rate_percent": 0.0013772124202900001,
           "raw_rate": "0.0000137721242029",
           "source_rate_field": "realizedRate"
+        },
+        {
+          "settled_at": "2026-10-25T08:00:00.000Z",
+          "rate_decimal": 1.29427907129e-05,
+          "rate_percent": 0.00129427907129,
+          "raw_rate": "0.0000129427907129",
+          "source_rate_field": "realizedRate"
         }
       ],
       "coverage": {
-        "first": "2026-09-25T08:00:00.000Z",
-        "last": "2026-10-25T00:00:00.000Z",
+        "first": "2026-09-25T16:00:00.000Z",
+        "last": "2026-10-25T08:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -1307,17 +1307,10 @@ window.FUNDING_HISTORY = {
       "symbol": "BTCUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T05:07:43.624Z",
-      "requested_start": "2026-09-25T05:07:42.989Z",
-      "requested_end": "2026-10-25T05:07:42.989Z",
+      "collected_at": "2026-10-25T14:23:52.401Z",
+      "requested_start": "2026-09-25T14:23:51.739Z",
+      "requested_end": "2026-10-25T14:23:51.739Z",
       "points": [
-        {
-          "settled_at": "2026-09-25T08:00:00.000Z",
-          "rate_decimal": 5.3e-05,
-          "rate_percent": 0.0053,
-          "raw_rate": "0.000053",
-          "source_rate_field": "fundingRate"
-        },
         {
           "settled_at": "2026-09-25T16:00:00.000Z",
           "rate_decimal": 7.8e-05,
@@ -1940,11 +1933,18 @@ window.FUNDING_HISTORY = {
           "rate_percent": 0.0036999999999999997,
           "raw_rate": "0.000037",
           "source_rate_field": "fundingRate"
+        },
+        {
+          "settled_at": "2026-10-25T08:00:00.000Z",
+          "rate_decimal": 6.1e-05,
+          "rate_percent": 0.0060999999999999995,
+          "raw_rate": "0.000061",
+          "source_rate_field": "fundingRate"
         }
       ],
       "coverage": {
-        "first": "2026-09-25T08:00:00.000Z",
-        "last": "2026-10-25T00:00:00.000Z",
+        "first": "2026-09-25T16:00:00.000Z",
+        "last": "2026-10-25T08:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -1957,17 +1957,10 @@ window.FUNDING_HISTORY = {
       "symbol": "ETHUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-25T05:07:43.807Z",
-      "requested_start": "2026-09-25T05:07:42.989Z",
-      "requested_end": "2026-10-25T05:07:42.989Z",
+      "collected_at": "2026-10-25T14:23:52.594Z",
+      "requested_start": "2026-09-25T14:23:51.739Z",
+      "requested_end": "2026-10-25T14:23:51.739Z",
       "points": [
-        {
-          "settled_at": "2026-09-25T08:00:00.000Z",
-          "rate_decimal": 6.1e-05,
-          "rate_percent": 0.0060999999999999995,
-          "raw_rate": "0.000061",
-          "source_rate_field": "fundingRate"
-        },
         {
           "settled_at": "2026-09-25T16:00:00.000Z",
           "rate_decimal": 0.0001,
@@ -2590,11 +2583,18 @@ window.FUNDING_HISTORY = {
           "rate_percent": 0.0033000000000000004,
           "raw_rate": "0.000033",
           "source_rate_field": "fundingRate"
+        },
+        {
+          "settled_at": "2026-10-25T08:00:00.000Z",
+          "rate_decimal": 5.9e-05,
+          "rate_percent": 0.0059,
+          "raw_rate": "0.000059",
+          "source_rate_field": "fundingRate"
         }
       ],
       "coverage": {
-        "first": "2026-09-25T08:00:00.000Z",
-        "last": "2026-10-25T00:00:00.000Z",
+        "first": "2026-09-25T16:00:00.000Z",
+        "last": "2026-10-25T08:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -2604,10 +2604,10 @@ window.FUNDING_HISTORY = {
   },
   "last_attempt": {
     "schema_version": 1,
-    "collected_at": "2026-10-25T05:07:43.807Z",
+    "collected_at": "2026-10-25T14:23:52.594Z",
     "days": 30,
-    "requested_start": "2026-09-25T05:07:42.989Z",
-    "requested_end": "2026-10-25T05:07:42.989Z",
+    "requested_start": "2026-09-25T14:23:51.739Z",
+    "requested_end": "2026-10-25T14:23:51.739Z",
     "venues": {
       "binance": {
         "status": "failed",
