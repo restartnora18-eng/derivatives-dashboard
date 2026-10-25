@@ -13,6 +13,7 @@ on:
       - 'basis-ui.js'
       - 'futures-ui.js'
       - 'summary-ui.js'
+      - 'percentile-ui.js'
       - 'options-ui.js'
       - 'option-positions-ui.js'
       - 'orderbook-ui.js'

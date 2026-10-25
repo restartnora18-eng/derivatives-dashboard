@@ -92,7 +92,7 @@ function render() {
   const available = Object.values(view.statuses).filter(state => state.received > 0).length;
   const heading = isLegacy ? '原年化口径' : '有效记录';
   content.innerHTML = `
-    ${id==='overview'?'<section id="summary-panel" class="panel"></section>':''}
+    ${id==='overview'?'<section id="percentile-panel" class="panel"></section><section id="summary-panel" class="panel"></section>':''}
     <div class="datasetbar"><label for="dataset">数据集</label><select id="dataset"><option value="collected" ${!isLegacy?'selected':''}>BTC / ETH · 按需采集</option><option value="legacy" ${isLegacy?'selected':''}>原项目 · 历史演示快照</option></select><span class="hint">${isLegacy?'仅用于参考页面与原始排名':'范围：四家交易所 · USDT 线性永续 · 无账户连接'}</span></div>
     <div class="stats">
       <div class="stat"><div class="label">快照记录</div><div class="value">${view.rows.length.toLocaleString()}</div><div class="hint">${isLegacy?'含非加密标的':'BTC / ETH，每家最多 2 条'}</div></div>
@@ -113,7 +113,7 @@ function render() {
     <div id="count" class="hint" aria-live="polite"></div><div class="tablewrap"><table><thead><tr><th>排名</th><th>标的 / 合约</th><th>交易所</th><th>周期费率</th><th>周期</th><th>年化</th><th>口径 / 质量</th><th>查看</th></tr></thead><tbody id="rows"></tbody></table></div><div id="pager" class="controls"></div><div id="detail" class="detail hidden"></div></section>
     <section id="history-panel" class="panel"></section>
     ${id==='overview'?`<div class="panelhead" style="margin-bottom:16px"><h2>分析模块</h2><span class="hint">循序接入 · 每个指标都可追溯</span></div><div class="modules">${modules.slice(1).map(([i,icon,n,d],k)=>`<a class="module" href="#${i}"><span class="number">0${k+1} / ${icon}</span><span class="status">${i==='funding'?'快照与历史已接入':i==='oi'?'小时快照已接入':i==='basis'?'溢价与交割已接入':i==='options'?'IV 与偏斜已接入':i==='orderbook'?'盘口快照已接入':i==='liquidations'?'实验性样本已接入':'待接入'}</span><h3>${n} ↗</h3><p>${d}</p></a>`).join('')}</div>`:''}`;
-  if (id==='overview') window.renderSummary(document.querySelector('#summary-panel'));
+  if (id==='overview') {window.renderSummary(document.querySelector('#summary-panel'));window.renderPercentiles(document.querySelector('#percentile-panel'));}
   document.querySelector('#dataset').onchange = event => {dataset=event.target.value;render();};
   let page=0;
   function draw() {
