@@ -12,6 +12,7 @@ on:
       - 'oi-ui.js'
       - 'basis-ui.js'
       - 'futures-ui.js'
+      - 'summary-ui.js'
       - 'data-model.js'
       - 'history-chart.js'
       - 'history-ui.js'

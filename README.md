@@ -143,3 +143,8 @@ node --check app.js
 ## 阶段 06：永续溢价
 
 基差页面先接入 OKX BTC/ETH USDT 永续溢价：（markPx / idxPx - 1）× 100%，同时展示 USDT 价差。复用本次成功采集的标记价格，每次云端刷新额外 2 个指数 GET，不使用账户或密钥。官方指数接口：https://app.okx.com/docs-v5/zh/#market-data-rest-api-get-index-tickers 。仅配对相同标的 USDT 价格，价格年龄不超过 180 秒，时间差不超过 120 秒，失败保留旧观测并标记状态。保留近 30 天，7/30 天选择，缺口断线与零溢价参考线。永续无到期日，本阶段不做到期年化、期限结构或套利收益推算。新增 collect_basis.py（采集与校验）、basis-data.js（浏览器快照）、basis-ui.js（展示）；cloud_update.py 调用采集，build_site.py 与工作流负责保存和部署。
+
+
+## Overview charts (stage 08)
+
+The overview now compares five real OKX series on a common time axis: mark price (USDT), OI (coin), settled funding (% per settlement), perpetual premium (USDT index), and one explicitly named USD inverse expiry contract basis (%). Select BTC/ETH and 24h/7d/30d. Each panel retains its own unit and freshness metadata. No composite score, historical backfill or continuous contract splice is generated. Existing seven pages are retained.
