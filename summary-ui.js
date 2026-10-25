@@ -24,7 +24,7 @@ window.SummarySeries=function(symbol,days,now=Date.now()){
  ]};
 };
 window.renderSummary=function(target){
- target.innerHTML=`<div class="panelhead"><div><h2>市场总览 · 多指标对照</h2><p>OKX · 真实观测 · 共用时间轴</p></div><span class="badge">综合观察框架</span></div><p class="hint">这里始终展示真实采集数据，与下方历史演示数据集独立。各指标保留原单位，不合成分数。期权为实际到期日的 IV / RR 近似值；盘口为小时快照，强平仍待接入。</p><div class="controls"><select id="summary-symbol" aria-label="总览币种"><option>BTC</option><option>ETH</option></select><select id="summary-days" aria-label="总览时间范围"><option value="1">最近 24 小时</option><option value="7">最近 7 天</option><option value="30">最近 30 天</option></select></div><div id="summary-charts"></div><p class="hint">所有图使用相同起止时间；纵轴各自缩放，斜率不能直接比较。小时采样超过 2 小时缺口断线；已结算资金费率仅画真实结算点。交割图跟踪标题中的单一 USD 币本位合约，不拼接换月，也不与 USDT 永续混为同一种合约。</p>`;
+ target.innerHTML=`<div class="panelhead"><div><h2>市场总览 · 多指标对照</h2><p>OKX · 真实观测 · 共用时间轴</p></div><span class="badge">综合观察框架</span></div><p class="hint">这里始终展示真实采集数据，与下方历史演示数据集独立。各指标保留原单位，不合成分数。期权为实际到期日的 IV / RR 近似值；盘口为小时快照，强平页为不完整实验性样本，未混入总览指标。</p><div class="controls"><select id="summary-symbol" aria-label="总览币种"><option>BTC</option><option>ETH</option></select><select id="summary-days" aria-label="总览时间范围"><option value="1">最近 24 小时</option><option value="7">最近 7 天</option><option value="30">最近 30 天</option></select></div><div id="summary-charts"></div><p class="hint">所有图使用相同起止时间；纵轴各自缩放，斜率不能直接比较。小时采样超过 2 小时缺口断线；已结算资金费率仅画真实结算点。交割图跟踪标题中的单一 USD 币本位合约，不拼接换月，也不与 USDT 永续混为同一种合约。</p>`;
  function draw(){
   const symbol=target.querySelector('#summary-symbol').value,days=Number(target.querySelector('#summary-days').value),view=window.SummarySeries(symbol,days);
   target.querySelector('#summary-charts').innerHTML=view.series.map(s=>{
