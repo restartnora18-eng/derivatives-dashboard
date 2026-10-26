@@ -27,6 +27,7 @@ function render() {
   let id = location.hash.slice(1) || 'overview';
   if (!modules.some(m => m[0] === id)) id = 'overview';
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
+  document.body.classList.toggle('terminal-view', id==='funding');
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
   document.querySelector('#intro').textContent = id === 'overview' ? '从资金成本出发，逐步建立自己的衍生品市场视角。' : mod[3];
@@ -47,6 +48,10 @@ function render() {
   document.querySelector('#methodology').textContent = isLegacy ?
     '演示数据沿用原项目 8 小时年化假设，实际周期未核验。' :
     '年化 = 周期费率 × 24 ÷ 周期小时数 × 365。仅作线性外推；周期未知不计算，过期或异常记录不参与有效排名。';
+  if (id === 'funding') {
+    window.renderFundingMatrix(content,view,{onDataset:value=>{dataset=value;render();}});
+    return;
+  }
   if (id === 'liquidations') {
     document.querySelector('#time').textContent = '样本尝试时间：' + date(window.LIQUIDATIONS_DATA?.attempted_at);
     document.querySelector('#notice-label').textContent = '◷ 实验性强平样本 · 不代表完整强平总量';

@@ -9,6 +9,7 @@ on:
       - 'index.html'
       - 'styles.css'
       - 'app.js'
+      - 'funding-matrix.js'
       - 'oi-ui.js'
       - 'basis-ui.js'
       - 'futures-ui.js'

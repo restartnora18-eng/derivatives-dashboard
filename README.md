@@ -9,6 +9,7 @@
 ## 当前能力
 
 - 七个页面（总览及六个分析模块）；资金费率搜索、排序、分页和详情。
+- 资金费率页按币种行、交易所列展示横向矩阵：原周期/8小时等效/年化切换、逐列排序、显示列开关、正红负绿和质量灰色。当前BTC/ETH采集与多币种历史演示独立切换；见[FUNDING_MATRIX.md](FUNDING_MATRIX.md)。
 - 数据集切换：BTC/ETH 按需采集快照，以及原项目多标的历史演示快照。
 - 显示原始周期费率、结算周期、线性年化、完整合约、来源时间、采集时间和交易所状态。
 - 已结算历史：BTC/ETH、交易所筛选、最近 7 天/30 天切换、结算散点图、最近 20 条明细、来源与失败状态。
@@ -30,7 +31,7 @@ GitHub Actions计划在每小时UTC第17分钟采样（可能延迟），结算�
 
 ### 验证与资源
 
-Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前66项Python与51项JS测试覆盖关键算法、异常保留、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
+Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前66项Python与55项JS测试覆盖关键算法、异常保留、矩阵、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
 
 上述为已实现范围，以下保留早期模块的详细操作说明，不表示整个长期系统已经完成。未接入付费聚合源、持续WebSocket、全市场强平、订单流、做市商净GEX或经过检验的综合评分。
 
