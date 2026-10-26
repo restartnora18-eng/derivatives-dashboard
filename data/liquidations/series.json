@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-26T05:01:45.101Z",
+  "attempted_at": "2026-10-26T05:04:39.228Z",
   "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
   "experimental": true,
   "coverage": "bounded_rest_observations_only",
@@ -11,7 +11,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 100
+      "new_observed": 0
     },
     "ETH": {
       "status": "ok",
@@ -20,7 +20,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 100
+      "new_observed": 3
     }
   },
   "storage_truncated": false,
@@ -11498,6 +11498,18 @@
       "first_seen": "2026-10-26T05:01:45.101Z"
     },
     {
+      "id": "58f7d7d141a54755a8f3b38d2dbfbb8ddecb63eb00b9ca267befbffc702f4717",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-26T05:01:43.043Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2326.36,
+      "raw_sz": "0.01",
+      "first_seen": "2026-10-26T05:04:39.228Z"
+    },
+    {
       "id": "4d835ddbcb23a9a99cdf83d700c2e9f6bfa4f5ea403c274d494474db3026f592",
       "symbol": "ETH",
       "contract": "ETH-USDT-SWAP",
@@ -11520,6 +11532,30 @@
       "bankruptcy_price": 80172.4,
       "raw_sz": "72.17",
       "first_seen": "2026-10-26T05:01:45.101Z"
+    },
+    {
+      "id": "ed96d3a987344b1aab81be6d52db89f9fb7a9abe223fe6ac4e055b9927751aa5",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-26T05:01:45.067Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2326.76,
+      "raw_sz": "3.29",
+      "first_seen": "2026-10-26T05:04:39.228Z"
+    },
+    {
+      "id": "481e6b25cdd46c0574a73f7484802c222837e66605754950282adeb874c2e89e",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-26T05:01:45.189Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2326.76,
+      "raw_sz": "3.59",
+      "first_seen": "2026-10-26T05:04:39.228Z"
     }
   ],
   "attempts": [
@@ -11718,6 +11754,24 @@
       "new_observed": 100,
       "new_longs": 6,
       "new_shorts": 94,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-10-26T05:04:39.228Z",
+      "new_observed": 0,
+      "new_longs": 0,
+      "new_shorts": 0,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-10-26T05:04:39.228Z",
+      "new_observed": 3,
+      "new_longs": 0,
+      "new_shorts": 3,
       "returned": 100,
       "limit_reached": true
     }
