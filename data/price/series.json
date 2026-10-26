@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-26T00:24:35.606Z",
+  "attempted_at": "2026-10-26T05:01:40.185Z",
   "endpoint": "https://www.okx.com/api/v5/public/mark-price",
   "states": {
     "BTC": {
@@ -297,6 +297,22 @@
       "price": 2327.17,
       "time": "2026-10-26T00:24:35.803Z",
       "fetched_at": "2026-10-26T00:24:35.606Z"
+    },
+    {
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "price": 80163.4,
+      "time": "2026-10-26T05:01:40.298Z",
+      "fetched_at": "2026-10-26T05:01:40.185Z"
+    },
+    {
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "price": 2325.98,
+      "time": "2026-10-26T05:01:40.498Z",
+      "fetched_at": "2026-10-26T05:01:40.185Z"
     }
   ]
 }
