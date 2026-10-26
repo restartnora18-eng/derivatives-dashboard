@@ -27,7 +27,7 @@ function render() {
   let id = location.hash.slice(1) || 'overview';
   if (!modules.some(m => m[0] === id)) id = 'overview';
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  document.body.classList.toggle('terminal-view', id==='funding');
+  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'));
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
   document.querySelector('#intro').textContent = id === 'overview' ? '从资金成本出发，逐步建立自己的衍生品市场视角。' : mod[3];
@@ -74,8 +74,8 @@ function render() {
     return;
   }
   if (id === 'basis') {
-    document.querySelector('#time').textContent = '溢价尝试时间：' + date(window.BASIS_DATA?.attempted_at);
-    document.querySelector('#notice-label').textContent = '◷ 永续溢价小时快照 · 刷新页面读取最新数据';
+    document.querySelector('#time').textContent = '交割合约尝试时间：' + date(window.FUTURES_DATA?.attempted_at);
+    document.querySelector('#notice-label').textContent = '◷ 基差小时快照 · 刷新页面读取最新数据';
     document.querySelector('#methodology').textContent = '永续溢价 =（标记价格 / 同币种 USDT 指数 − 1）× 100%；交割合约简单年化按实际剩余天数计算，非实际收益。';
     window.renderBasis(content);
     return;

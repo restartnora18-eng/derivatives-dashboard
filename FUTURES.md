@@ -16,3 +16,7 @@ OKX `public/instruments` 校验 instFamily、settleCcy、ctType、state、expTim
 ## 2026-10-25 修正
 
 原 USDT 交割合约系列已被 OKX 停止，最后到期日为 2026-06-26，原接口返回成功但 data 为空。因此改接经公开接口核实仍在交易的 BTC-USD / ETH-USD 币本位反向系列。结算币种、报价币种和指数 ID 均保存在记录中，界面分开展示。来源：[OKX 停止 USDT 交割合约公告](https://www.okx.com/en-gb/help/announcement-on-discontinuing-btc-and-eth-usdt-margined-expiry-futures)。
+
+## 2026-10-26 合约对比表
+
+基差页首先展示截图风格的十列合约表，默认按简单年化降序，支持有效字段排序和 BTC/ETH 切换。币本位反向合约按实际结算币标识，基差使用配对 OKX 指数，不冒充跨所均价。持仓量和 24h 成交量尚未接入，显示 —。点击合约可展开价格时间与指数来源。期限曲线、固定合约历史及 USDT 永续溢价收起显示，采集和发布方式不变，不新增 API 请求或本地后台进程。
