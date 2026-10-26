@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PUBLIC_FILES = (
     "index.html", "styles.css", "app.js", "snapshot.js", "funding-data.js",
-    "funding-matrix.js", "analysis-export.js", "percentile-ui.js", "option-positions-data.js", "option-positions-ui.js", "book-simulator.js", "liquidations-data.js", "liquidations-ui.js", "orderbook-data.js", "orderbook-ui.js", "liquidity-ui.js", "options-data.js", "options-ui.js", "summary-ui.js", "futures-data.js", "futures-ui.js", "basis-data.js", "basis-ui.js", "price-data.js", "oi-data.js", "oi-ui.js", "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
+    "funding-matrix.js", "overview-wall.js", "analysis-export.js", "percentile-ui.js", "option-positions-data.js", "option-positions-ui.js", "book-simulator.js", "liquidations-data.js", "liquidations-ui.js", "liquidation-heatmap.js", "orderbook-data.js", "orderbook-ui.js", "liquidity-ui.js", "options-data.js", "options-ui.js", "summary-ui.js", "futures-data.js", "futures-ui.js", "basis-data.js", "basis-ui.js", "price-data.js", "oi-data.js", "oi-ui.js", "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
 )
 
 

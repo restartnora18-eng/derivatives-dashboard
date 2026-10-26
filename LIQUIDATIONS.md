@@ -11,3 +11,11 @@ sz单位未在此退役文档接口中独立核验，因此仅显示原始值，
 最多10000条、近30天，保存每次成功请求摘要，失败保留旧记录。达到存储上限会提示截断。每次2个公开GET，不使用密钥、常驻采集器或交易接口。暂不混入总览的可比指标组。
 
 实现collect_liquidations.py、liquidations-data.js、liquidations-ui.js；GitHub Actions调度保存并发布。不能将本模块描述成全市场/全交易所总量、连续捕获或正式完整强平API。
+
+## 2026-10-26 截图风格热力主图
+
+新增liquidation-heatmap.js，把主图改为大幅时间×价格热力图。聚合既有OKX强平观察样本条数：24h为15分钟桶、7d为1小时桶、30d为3小时桶；价格按所选真实样本/标记价联合范围分64桶。按ID去重（无ID时使用合约/时间/方向/破产价/sz指纹）。热力单位明确为条，不使用单位未核验的raw_sz求和。筛选全部/多头/空头、两种配色、阈值为最大格条数百分比；颜色对数缩放。只绘制有样本格，不把空白解释为无强平，不延长色带。
+
+叠加独立的合约标记价线，超过2小时断线，未伪造K线。可导出带图内说明的SVG，原始记录与请求摘要收进折叠详情。
+
+潜在清算分布单独设待接入页签，不显示假数据，不能导出空模型图。CoinGlass官方模型1端点/api/futures/liquidation/heatmap/model1按市场数据与杠杆级别计算清算分布，当前官方文档列Professional/Enterprise可用；项目没有该授权数据，不新建订阅、不收集密钥，不增加API调用。官方资料：https://github.com/coinglass-official/coinglass-api-docs/blob/main/rest/Futures/Liquidation/liquidation-heatmap.md 。

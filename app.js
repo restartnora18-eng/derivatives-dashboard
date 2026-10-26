@@ -16,6 +16,8 @@ const statusLabels = {ok:'采集成功', warning:'字段待核验', partial:'部
 const kindLabels = {published_current:'接口当前值', estimated_upcoming:'待结算估计值', legacy:'原年化口径'};
 let dataset = window.FUNDING_DATA?.last_attempt ? 'collected' : 'legacy';
 let expiryTimer;
+let previousRoute;
+if ('scrollRestoration' in history) history.scrollRestoration='manual';
 document.querySelector('#nav').innerHTML = modules.map(([id,icon,name]) => `<a href="#${id}" data-id="${id}">${icon}　${name}</a>`).join('');
 const content = document.querySelector('#content');
 
@@ -26,8 +28,10 @@ function getView() {
 function render() {
   let id = location.hash.slice(1) || 'overview';
   if (!modules.some(m => m[0] === id)) id = 'overview';
+  if(previousRoute!==id){window.scrollTo(0,0);previousRoute=id;}
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'));
+  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'||id==='liquidations'||id==='overview'));
+  document.body.classList.toggle('overview-view', id==='overview');
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
   document.querySelector('#intro').textContent = id === 'overview' ? '从资金成本出发，逐步建立自己的衍生品市场视角。' : mod[3];
@@ -48,6 +52,12 @@ function render() {
   document.querySelector('#methodology').textContent = isLegacy ?
     '演示数据沿用原项目 8 小时年化假设，实际周期未核验。' :
     '年化 = 周期费率 × 24 ÷ 周期小时数 × 365。仅作线性外推；周期未知不计算，过期或异常记录不参与有效排名。';
+  if (id === 'overview') {
+    document.querySelector('#notice-label').textContent = '◷ 六指标同屏 · 云端小时快照';
+    document.querySelector('#time').textContent = '各图按来源时间标注';
+    window.renderOverviewWall(content);
+    return;
+  }
   if (id === 'funding') {
     window.renderFundingMatrix(content,view,{onDataset:value=>{dataset=value;render();}});
     return;
@@ -56,7 +66,7 @@ function render() {
     document.querySelector('#time').textContent = '样本尝试时间：' + date(window.LIQUIDATIONS_DATA?.attempted_at);
     document.querySelector('#notice-label').textContent = '◷ 实验性强平样本 · 不代表完整强平总量';
     document.querySelector('#methodology').textContent = '仅限有界REST观察样本，接口已退出正式文档；不换算或展示全市场强平金额。';
-    window.renderLiquidations(content);
+    window.renderLiquidationHeatmap(content);
     return;
   }
   if (id === 'orderbook') {
