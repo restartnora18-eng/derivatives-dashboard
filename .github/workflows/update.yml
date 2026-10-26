@@ -19,6 +19,7 @@ on:
       - 'options-ui.js'
       - 'option-positions-ui.js'
       - 'orderbook-ui.js'
+      - 'liquidity-ui.js'
       - 'book-simulator.js'
       - 'liquidations-ui.js'
       - 'data-model.js'

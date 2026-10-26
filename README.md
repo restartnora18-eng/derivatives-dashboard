@@ -31,7 +31,7 @@ GitHub Actions计划在每小时UTC第17分钟采样（可能延迟），结算�
 
 ### 验证与资源
 
-Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前66项Python与55项JS测试覆盖关键算法、异常保留、矩阵、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
+Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前68项Python与63项JS测试覆盖关键算法、异常保留、矩阵、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
 
 上述为已实现范围，以下保留早期模块的详细操作说明，不表示整个长期系统已经完成。未接入付费聚合源、持续WebSocket、全市场强平、订单流、做市商净GEX或经过检验的综合评分。
 

@@ -27,7 +27,7 @@ function render() {
   let id = location.hash.slice(1) || 'overview';
   if (!modules.some(m => m[0] === id)) id = 'overview';
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'));
+  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'));
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
   document.querySelector('#intro').textContent = id === 'overview' ? '从资金成本出发，逐步建立自己的衍生品市场视角。' : mod[3];
@@ -63,7 +63,7 @@ function render() {
     document.querySelector('#time').textContent = '盘口尝试时间：' + date(window.ORDERBOOK_DATA?.attempted_at);
     document.querySelector('#notice-label').textContent = '◷ 盘口小时快照 · 非实时盘口';
     document.querySelector('#methodology').textContent = 'USDT永续最多400档/侧；范围不足只展示观察下限，不计算完整区间失衡。';
-    window.renderOrderbook(content);
+    window.renderLiquidity(content);
     return;
   }
   if (id === 'options') {

@@ -35,3 +35,18 @@ class BookTests(unittest.TestCase):
    self.assertEqual(len(first['records']),2);self.assertNotIn('bids',first['records'][0])
    with patch.object(collect_orderbook,'get_json',side_effect=DataError('http_403','blocked')) as request:second=collect_orderbook.collect(directory);self.assertEqual(request.call_count,1)
    self.assertEqual(first['snapshots'],second['snapshots']);self.assertEqual(len(second['records']),2)
+
+class FrameTests(unittest.TestCase):
+ def test_frame_conserves_complete_bin_notional_and_marks_uncovered_null(self):
+  i,b=fixture(n=30);snapshot=collect_orderbook.normalize(i,b,'BTC',utc_now())
+  frame=collect_orderbook.depth_frame(snapshot)
+  self.assertEqual(len(frame['bids']),50)
+  count=sum(v is not None for v in frame['bids'])
+  self.assertEqual(count,30)
+  expected=sum(l['notional'] for l in snapshot['bids'] if (snapshot['mid']-l['price'])/snapshot['mid']*10000<count)
+  self.assertAlmostEqual(sum(v for v in frame['bids'] if v is not None),expected,places=1)
+  self.assertIsNone(frame['bids'][-1]);self.assertNotIn('contracts',frame)
+ def test_hourly_dedup_retains_latest_and_prunes_old_frames(self):
+  frames=[{'contract':'BTC-USDT-SWAP','time':t} for t in ['2026-10-01T00:00:00Z','2026-10-26T01:01:00Z','2026-10-26T01:59:00Z','2026-10-26T02:00:00Z']]
+  out=collect_orderbook.merge_frames(frames[:2],frames[2:],'2026-10-26T03:00:00Z')
+  self.assertEqual([f['time'] for f in out],['2026-10-26T01:59:00Z','2026-10-26T02:00:00Z'])

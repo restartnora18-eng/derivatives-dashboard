@@ -41,20 +41,45 @@ def normalize(instruments,book,symbol,now):
  top20=(top_bid-top_ask)/(top_bid+top_ask)*100 if min(len(sides['bids']),len(sides['asks']))>=20 and top_bid+top_ask>0 else None
  return {'top20_imbalance_pct':top20,'symbol':symbol,'contract':contract,'venue':'okx','time':stamp,'fetched_at':now,'mid':mid,'best_bid':bid,'best_ask':ask,'spread':ask-bid,'spread_bps':(ask-bid)/mid*10000,'imbalance25_pct':bands['25']['imbalance_pct'],'bands':bands,'ct_val':value,'ct_mult':mult,'ct_val_ccy':symbol,'bids':sides['bids'],'asks':sides['asks'],'bid_coverage_bps':(mid-sides['bids'][-1]['price'])/mid*10000,'ask_coverage_bps':(sides['asks'][-1]['price']-mid)/mid*10000}
 
+def depth_frame(snapshot):
+ """Lossy 1-bps bins, ±50 bps. Uncovered bins stay null, never zero-filled."""
+ mid=snapshot['mid'];step=mid/10000;out={}
+ for side in ('bids','asks'):
+  values=[0.0]*50
+  coverage=snapshot['bid_coverage_bps' if side=='bids' else 'ask_coverage_bps']
+  for level in snapshot[side]:
+   offset=(mid-level['price'])/step if side=='bids' else (level['price']-mid)/step
+   index=int(offset)
+   if 0<=offset<50:values[index]+=level['notional']
+  out[side]=[round(v,2) if coverage>=j+1-1e-8 else None for j,v in enumerate(values)]
+ return {'symbol':snapshot['symbol'],'contract':snapshot['contract'],'time':snapshot['time'],
+         'mid':mid,'bin_bps':1,'bids':out['bids'],'asks':out['asks']}
+
+def merge_frames(previous,new,now):
+ """Keep the last source observation per UTC hour; bounded to seven days."""
+ cutoff=parse_time(now)-timedelta(days=7);merged={}
+ for frame in previous+new:
+  stamp=parse_time(frame['time'])
+  if cutoff<=stamp<=parse_time(now)+timedelta(seconds=60):
+   key=(frame['contract'],int(stamp.timestamp()//3600))
+   if key not in merged or stamp>parse_time(merged[key]['time']):merged[key]=frame
+ return sorted(merged.values(),key=lambda f:(f['time'],f['contract']))
+
 def collect(root=ROOT):
  root=Path(root);path=root/'data/orderbook/series.json';old=json.loads(path.read_text()) if path.exists() else {'records':[],'snapshots':{}}
- now=utc_now();states={};snapshots=old.get('snapshots',{});new=[];blocked=False
+ now=utc_now();states={};snapshots=old.get('snapshots',{});new=[];new_frames=[];blocked=False
  for symbol in ('BTC','ETH'):
   try:
    if blocked:raise DataError('access_restricted','访问受限，跳过重复请求')
    i=get_json(API+'public/instruments',{'instType':'SWAP','instId':symbol+'-USDT-SWAP'})
    b=get_json(API+'market/books',{'instId':symbol+'-USDT-SWAP','sz':'400'})
-   r=normalize(i,b,symbol,now);snapshots[symbol]=r;new.append({k:v for k,v in r.items() if k not in ('bids','asks')});states[symbol]={'status':'ok'}
+   r=normalize(i,b,symbol,now);snapshots[symbol]=r;new_frames.append(depth_frame(r));new.append({k:v for k,v in r.items() if k not in ('bids','asks')});states[symbol]={'status':'ok'}
   except Exception as exc:
    code=getattr(exc,'code',type(exc).__name__);blocked=blocked or code in ('http_403','http_451');states[symbol]={'status':'failed','code':code}
  cutoff=datetime.now(timezone.utc)-timedelta(days=30)
  merged={(r['contract'],r['time']):r for r in old.get('records',[]) if parse_time(r['time'])>=cutoff};merged.update({(r['contract'],r['time']):r for r in new})
- result={'attempted_at':now,'states':states,'snapshots':snapshots,'records':sorted(merged.values(),key=lambda r:(r['time'],r['contract']))}
+ frames=merge_frames(old.get('depth_frames',[]),new_frames,now)
+ result={'depth_frames':frames,'attempted_at':now,'states':states,'snapshots':snapshots,'records':sorted(merged.values(),key=lambda r:(r['time'],r['contract']))}
  atomic_text(path,serialize(result));atomic_text(root/'orderbook-data.js','window.ORDERBOOK_DATA = '+json.dumps(result,ensure_ascii=False,allow_nan=False)+';\n');return result
 
 if __name__=='__main__':collect()
