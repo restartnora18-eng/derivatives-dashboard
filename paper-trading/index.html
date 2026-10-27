@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kimra Paper Trading</title><link rel="stylesheet" href="style.css?v=english-1">
+</head><body>
+<main>
+  <section class="market-panel" id="market-panel" aria-label="Binance BTCUSDT perpetual, 1H candles, UTC+8">
+    <div id="chart"></div>
+  </section>
+  <section class="equity" aria-label="Equity">
+    <canvas id="equity" height="145" tabindex="0" role="img" aria-label="Equity chart, UTC+8"></canvas>
+  </section>
+        <section class="panel trade-panel" id="trade-panel">
+          <h2>Paper Trading</h2>
+          <label
+            >Qty / BTC<input
+              id="quantity"
+              value="0.01"
+              type="number"
+              min="0.00001"
+              step="0.00001"
+          /></label>
+          <div class="actions">
+            <button id="long" class="buy">Long / Add</button
+            ><button id="short" class="sell">Short / Add</button
+            ><button id="reduce">Reduce</button
+            ><button id="close">Close All</button>
+          </div>
+          <div id="position" class="position"></div>
+          <p id="status" role="status">Waiting for quote</p>
+        </section>
+</main>
+<div hidden aria-hidden="true">
+  <span id="connection"></span><span id="price"></span><span id="schedule"></span>
+  <button id="refresh" type="button"></button><button id="report" type="button"></button><button id="backup" type="button"></button>
+  <div id="metrics"></div><table><tbody id="trades"></tbody></table>
+      <details class="panel">
+        <summary>New paper account & rules</summary>
+        <p>Export a backup first. These rules apply only to the new account; accounts are not merged.</p>
+        <form id="settings">
+          <label
+            >Initial balance / USDT<input name="initial" value="10000" required /></label
+          ><label
+            >Leverage (1–100)<input name="leverage" value="5" required /></label
+          ><label>Fee rate<input name="fee" value="0.0005" required /></label
+          ><label>Slippage rate<input name="slippage" value="0.0002" required /></label
+          ><label
+            >Maintenance margin rate<input
+              name="maintenance"
+              value="0.005"
+              required /></label
+          ><label
+            >Liquidation fee rate<input
+              name="liquidationFee"
+              value="0.001"
+              required /></label
+          ><label
+            >Funding rules<select name="fundingMode">
+              <option value="off">Off</option>
+              <option value="fixed">Fixed / 00:00, 08:00, 16:00 UTC+8</option>
+            </select></label
+          ><label
+            >Funding rate / interval<input
+              name="fundingRate"
+              value="0.0001"
+              required /></label
+          ><button>Create account</button>
+        </form>
+        <label
+          >Restore JSON backup<input
+            id="restore"
+            type="file"
+            accept="application/json"
+        /></label>
+      </details>
+</div>
+<script src="https://unpkg.com/lightweight-charts@5.0.8/dist/lightweight-charts.standalone.production.js"></script>
+<script type="module" src="src/app.js?v=english-1"></script>
+</body></html>

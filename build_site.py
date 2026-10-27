@@ -15,6 +15,18 @@ PUBLIC_FILES = (
 )
 
 
+PAPER_TRADING_FILES = (
+    "paper-trading/index.html",
+    "paper-trading/style.css",
+    "paper-trading/src/app.js",
+    "paper-trading/src/engine.js",
+    "paper-trading/src/market.js",
+    "paper-trading/src/storage.js",
+    "paper-trading/src/time.js",
+    "paper-trading/src/assets-chart.js"
+)
+
+
 class References(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -38,6 +50,15 @@ def build_site(root=ROOT, hosted=False):
         path = root / filename
         if not path.is_file() or path.is_symlink():
             raise ValueError("公开文件缺失或为符号链接: " + filename)
+    paper_files = ()
+    if (root / "paper-trading").exists():
+        if (root / "paper-trading").is_symlink():
+            raise ValueError("Paper trading directory must not be a symlink")
+        for filename in PAPER_TRADING_FILES:
+            path = root / filename
+            if not path.is_file() or path.is_symlink() or path.parent.is_symlink():
+                raise ValueError("Missing or unsafe paper trading asset: " + filename)
+        paper_files = PAPER_TRADING_FILES
     references = References()
     references.feed((root / "index.html").read_text(encoding="utf-8"))
     allowed = set(PUBLIC_FILES) | {"runtime-config.js"}
@@ -45,7 +66,8 @@ def build_site(root=ROOT, hosted=False):
         raise ValueError("网页引用了未列入发布清单的资源")
     with tempfile.TemporaryDirectory(prefix=".build-", dir=str(root)) as directory:
         stage = Path(directory)
-        for filename in PUBLIC_FILES:
+        for filename in (*PUBLIC_FILES, *paper_files):
+            (stage / filename).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(root / filename, stage / filename)
         runtime = {"hosted": hosted, "expected_refresh_minutes": 60}
         (stage / "runtime-config.js").write_text("window.DASHBOARD_RUNTIME = " + json.dumps(runtime) + ";\n", encoding="utf-8")
@@ -61,7 +83,7 @@ def main():
     parser.add_argument("--hosted", action="store_true", help="页面标记为云端定时快照")
     args = parser.parse_args()
     dist = build_site(hosted=args.hosted)
-    print(f"Static site built: {dist} ({sum(p.stat().st_size for p in dist.iterdir())} bytes)")
+    print(f"Static site built: {dist} ({sum(p.stat().st_size for p in dist.rglob('*') if p.is_file())} bytes)")
 
 
 if __name__ == "__main__":
