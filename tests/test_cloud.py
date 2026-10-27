@@ -12,6 +12,9 @@ import collect_funding
 
 class CloudTests(unittest.TestCase):
     def setUp(self):
+        minute_patcher=patch.object(cloud_update.collect_oi_minutes,"collect",return_value={"states":{"oi":{"status":"ok"},"prices":{"status":"ok"}}})
+        minute_patcher.start()
+        self.addCleanup(minute_patcher.stop)
         positions_patcher = patch.object(cloud_update.collect_option_positions, "collect", return_value={"states":{"BTC":{"status":"ok"}}})
         positions_patcher.start()
         self.addCleanup(positions_patcher.stop)

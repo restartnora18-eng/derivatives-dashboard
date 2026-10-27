@@ -10,6 +10,7 @@ from pathlib import Path
 import collect_funding
 import collect_history
 import collect_oi
+import collect_oi_minutes
 import collect_price
 import collect_basis
 import collect_futures
@@ -63,6 +64,12 @@ def update(root=ROOT, force_history=False):
     except Exception as exc:
         report["oi"] = "failed"
         report["errors"].append({"module":"oi", "type":type(exc).__name__})
+    try:
+        minute_oi = collect_oi_minutes.collect(root)
+        report["oi_minutes"] = "available" if minute_oi["states"]["oi"]["status"] == "ok" and minute_oi["states"]["prices"]["status"] == "ok" else "failed"
+    except Exception as exc:
+        report["oi_minutes"] = "failed"
+        report["errors"].append({"module":"oi_minutes", "type":type(exc).__name__})
     try:
         prices = collect_price.collect(root)
         report["price"] = "available" if any(s["status"] == "ok" for s in prices["states"].values()) else "failed"
@@ -128,7 +135,7 @@ def main():
     if args.check_health:
         report = json.loads((ROOT / "data/cloud-status.json").read_text(encoding="utf-8"))
         print(summary(report))
-        return int(report.get("option_positions") == "failed" or report.get("liquidations") == "failed" or report.get("orderbook") == "failed" or report.get("options") == "failed" or report.get("futures") == "failed" or report.get("basis") == "failed" or report.get("price") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
+        return int(report.get("option_positions") == "failed" or report.get("liquidations") == "failed" or report.get("orderbook") == "failed" or report.get("options") == "failed" or report.get("futures") == "failed" or report.get("basis") == "failed" or report.get("price") == "failed" or report.get("oi_minutes") == "failed" or report.get("oi") == "failed" or report["funding"] == "failed" or report["history"] == "failed" or bool(report["errors"]))
     report = update(force_history=args.force_history)
     message = summary(report)
     print(message)

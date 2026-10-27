@@ -30,7 +30,7 @@ function render() {
   if (!modules.some(m => m[0] === id)) id = 'overview';
   if(previousRoute!==id){window.scrollTo(0,0);previousRoute=id;}
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'||id==='liquidations'||id==='overview'));
+  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'||id==='liquidations'||id==='overview'||id==='oi'));
   document.body.classList.toggle('overview-view', id==='overview');
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
@@ -91,10 +91,10 @@ function render() {
     return;
   }
   if (id === 'oi') {
-    document.querySelector('#time').textContent = 'OI 尝试时间：' + date(window.OI_DATA?.attempted_at);
+    document.querySelector('#time').textContent = 'BTC分钟历史尝试：' + date(window.OI_MINUTES_DATA?.attempted_at);
     document.querySelector('#methodology').textContent = 'OI：单一交易所 USDT 永续合约；原始单位分别展示，不推断多空方向。';
-    document.querySelector('#notice-label').textContent = '◷ OI 小时快照 · 刷新页面读取最新数据';
-    window.renderOI(content);
+    document.querySelector('#notice-label').textContent = '◷ BTC · 真实5分钟历史 · 云端按小时补采';
+    window.renderMinuteOI(content);
     return;
   }
   if (!['overview','funding'].includes(id)) {

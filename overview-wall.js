@@ -1,11 +1,11 @@
 'use strict';
 (function(){
  const fmt=(v,d=2)=>Number.isFinite(v)?v.toLocaleString('zh-CN',{maximumFractionDigits:d}):'—';
- function chart(rows,key,title,unit,bounds,color,{pointsOnly=false,bars=false,zero=false,digits=2}={}){
+ function chart(rows,key,title,unit,bounds,color,{pointsOnly=false,bars=false,zero=false,digits=2,maxGapMs=7200000}={}){
   rows=rows.filter(r=>Number.isFinite(r[key])&&Number.isFinite(Date.parse(r.time))).sort((a,b)=>Date.parse(a.time)-Date.parse(b.time));
   if(!rows.length)return '<div class="wall-empty">暂无区间观测 · 等待数据积累</div>';
   const vals=rows.map(r=>r[key]),lo=Math.min(...vals,...(zero||bars?[0]:[])),hi=Math.max(...vals,...(zero||bars?[0]:[])),pad=(hi-lo)*.12||Math.max(Math.abs(hi)*.01,.001),min=lo-pad,max=hi+pad,x=t=>55+(t-bounds[0])/(bounds[1]-bounds[0])*505,y=v=>119-(v-min)/(max-min)*96;
-  let path='',paths='';if(!pointsOnly&&!bars)rows.forEach((r,i)=>{if(i&&Date.parse(r.time)-Date.parse(rows[i-1].time)>72e5){paths+=`<path d="${path}"/>`;path='';}path+=`${path?'L':'M'}${x(Date.parse(r.time))},${y(r[key])} `;});if(path)paths+=`<path d="${path}"/>`;
+  let path='',paths='';if(!pointsOnly&&!bars)rows.forEach((r,i)=>{if(i&&Date.parse(r.time)-Date.parse(rows[i-1].time)>maxGapMs){paths+=`<path d="${path}"/>`;path='';}path+=`${path?'L':'M'}${x(Date.parse(r.time))},${y(r[key])} `;});if(path)paths+=`<path d="${path}"/>`;
   return `<svg viewBox="0 0 590 145" role="img" aria-label="${esc(title)}，单位${esc(unit)}"><g fill="#7f8fa5" font-size="9">${[lo,(lo+hi)/2,hi].map(v=>`<line x1="55" x2="560" y1="${y(v)}" y2="${y(v)}" stroke="#283545"/><text x="2" y="${y(v)+3}">${fmt(v,digits)}</text>`).join('')}${zero?`<line x1="55" x2="560" y1="${y(0)}" y2="${y(0)}" stroke="#59697d" stroke-dasharray="3 4"/>`:''}<text x="55" y="140">${esc(date(new Date(bounds[0]).toISOString()).replace(' 北京时间',''))}</text><text x="560" y="140" text-anchor="end">${esc(date(new Date(bounds[1]).toISOString()).replace(' 北京时间',''))}</text></g><g stroke="${color}" stroke-width="1.8" fill="none">${paths}</g>${rows.map(r=>bars?`<rect x="${x(Date.parse(r.time))-2}" y="${Math.min(y(r[key]),y(0))}" width="4" height="${Math.max(1,Math.abs(y(0)-y(r[key])))}" fill="${color}"><title>${date(r.time)} · ${fmt(r[key],digits)} ${esc(unit)}</title></rect>`:`<circle cx="${x(Date.parse(r.time))}" cy="${y(r[key])}" r="${pointsOnly?3:1.8}" fill="${color}"><title>${date(r.time)} · ${fmt(r[key],digits)} ${esc(unit)}</title></circle>`).join('')}</svg>`;
  }
  function series(symbol,days,now=Date.now(),choice={}){

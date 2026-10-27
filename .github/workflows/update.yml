@@ -12,6 +12,7 @@ on:
       - 'overview-wall.js'
       - 'funding-matrix.js'
       - 'oi-ui.js'
+      - 'oi-minutes-ui.js'
       - 'basis-ui.js'
       - 'futures-ui.js'
       - 'summary-ui.js'
@@ -85,7 +86,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/ funding-data.js history-data.js oi-data.js price-data.js basis-data.js futures-data.js options-data.js option-positions-data.js orderbook-data.js liquidations-data.js
+          git add data/ funding-data.js history-data.js oi-data.js oi-minutes-data.js price-data.js basis-data.js futures-data.js options-data.js option-positions-data.js orderbook-data.js liquidations-data.js
           if ! git diff --staged --quiet; then
             git commit -m 'chore: refresh derivatives data'
             git push

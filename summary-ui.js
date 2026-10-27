@@ -1,7 +1,9 @@
 'use strict';
 window.SummarySeries=function(symbol,days,now=Date.now()){
  const start=now-days*864e5,filter=rows=>(rows||[]).filter(r=>r.symbol===symbol&&Date.parse(r.time)>=start&&Date.parse(r.time)<=now).sort((a,b)=>Date.parse(a.time)-Date.parse(b.time));
- const price=filter(window.PRICE_DATA?.records),oi=filter(window.OI_DATA?.records),basis=filter(window.BASIS_DATA?.records);
+ const minute=symbol==='BTC'&&(window.OI_MINUTES_DATA?.records||[]).length?window.OI_MINUTES_DATA:null;
+ const tagged=rows=>(rows||[]).map(r=>({...r,symbol:'BTC',contract:'BTC-USDT-SWAP',venue:'okx'}));
+ const price=minute?filter(tagged(minute.prices)):filter(window.PRICE_DATA?.records),oi=minute?filter(tagged(minute.records)):filter(window.OI_DATA?.records),basis=filter(window.BASIS_DATA?.records);
  const fundingSource=window.FUNDING_HISTORY?.series?.[`okx:${symbol}`];
  const funding=(fundingSource?.points||[]).filter(p=>Date.parse(p.settled_at)>=start&&Date.parse(p.settled_at)<=now).map(p=>({time:p.settled_at,value:p.rate_percent}));
  const snap=window.FUTURES_DATA?.snapshots?.[symbol];
@@ -12,8 +14,8 @@ window.SummarySeries=function(symbol,days,now=Date.now()){
  const option=optionCandidates.length?optionCandidates.reduce((a,b)=>Math.abs(Date.parse(a.expiry)-now-30*864e5)<Math.abs(Date.parse(b.expiry)-now-30*864e5)?a:b):null;
  const optionRows=filter(window.OPTIONS_DATA?.records).filter(r=>r.expiry===option?.expiry);
  return {bounds:[start,now],series:[
-  {title:'合约标记价格',rows:price,key:'price',unit:'USDT',color:'#a6b8f7',attempt:window.PRICE_DATA?.attempted_at,state:window.PRICE_DATA?.states?.[symbol]?.status},
-  {title:'未平仓量 · 币数量',rows:oi,key:'coin',unit:symbol,color:'#c7ec96',attempt:window.OI_DATA?.attempted_at,state:window.OI_DATA?.states?.[symbol]?.status},
+  {title:minute?'标记价格 · 5分钟K线收盘':'合约标记价格',maxGapMs:minute?450000:7200000,rows:price,key:'price',unit:'USDT',color:'#a6b8f7',attempt:minute?minute.attempted_at:window.PRICE_DATA?.attempted_at,state:minute?minute.states?.prices?.status:window.PRICE_DATA?.states?.[symbol]?.status},
+  {title:minute?'未平仓量 · 币数量 · 5分钟':'未平仓量 · 币数量',maxGapMs:minute?450000:7200000,rows:oi,key:'coin',unit:symbol,color:'#c7ec96',attempt:minute?minute.attempted_at:window.OI_DATA?.attempted_at,state:minute?minute.states?.oi?.status:window.OI_DATA?.states?.[symbol]?.status},
   {title:'已结算资金费率 · 每次结算',rows:funding,key:'value',unit:'%',color:'#e7a594',digits:5,zero:true,pointsOnly:true,attempt:fundingSource?.collected_at,historical:true},
   {title:'永续溢价 · USDT 指数口径',rows:basis,key:'premium_pct',unit:'%',color:'#e1c585',digits:4,zero:true,attempt:window.BASIS_DATA?.attempted_at,state:window.BASIS_DATA?.states?.[symbol]?.status},
   {title:`交割基差 · ${chosen?.contract||'尚无合约'}`,rows:future,key:'basis_pct',unit:'%',color:'#a6d7d7',digits:4,zero:true,attempt:window.FUTURES_DATA?.attempted_at,state:window.FUTURES_DATA?.states?.[symbol]?.status},
@@ -31,7 +33,7 @@ window.renderSummary=function(target){
    const rows=s.rows.filter(r=>Number.isFinite(r[s.key])),last=rows.at(-1),age=last?Date.now()-Date.parse(last.time):Infinity;
    const value=last?Number(last[s.key]).toLocaleString('zh-CN',{maximumFractionDigits:s.digits??2}):'—';
    const status=s.historical?'真实结算历史':s.state==='ok'?'最近采集成功':s.state==='partial'?'部分失败':'采集未成功';
-   return `<article class="summary-chart"><div class="panelhead"><h3>${esc(s.title)}</h3><strong style="color:${s.color}">${value} ${esc(s.unit)}</strong></div><p class="hint">${status} · ${rows.length} 个区间观测${rows.length<2?' · 积累中':''}<br>数据时间：${date(last?.time)}${!s.historical&&age>5400000?' · 暂无新鲜观测':''} · 采集时间：${date(s.attempt)}</p>${window.OIChart(rows,s.key,`${symbol} ${s.title}，单位 ${s.unit}`,s.unit,view.bounds,s.color,{digits:s.digits??2,zero:s.zero,maxGapMs:s.pointsOnly?0:7200000})}</article>`;
+   return `<article class="summary-chart"><div class="panelhead"><h3>${esc(s.title)}</h3><strong style="color:${s.color}">${value} ${esc(s.unit)}</strong></div><p class="hint">${status} · ${rows.length} 个区间观测${rows.length<2?' · 积累中':''}<br>数据时间：${date(last?.time)}${!s.historical&&age>5400000?' · 暂无新鲜观测':''} · 采集时间：${date(s.attempt)}</p>${window.OIChart(rows,s.key,`${symbol} ${s.title}，单位 ${s.unit}`,s.unit,view.bounds,s.color,{digits:s.digits??2,zero:s.zero,maxGapMs:s.pointsOnly?0:(s.maxGapMs??7200000)})}</article>`;
   }).join('');
  }
  target.querySelectorAll('select').forEach(e=>e.addEventListener('change',draw));draw();

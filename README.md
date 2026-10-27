@@ -31,7 +31,7 @@ GitHub Actions计划在每小时UTC第17分钟采样（可能延迟），结算�
 
 ### 验证与资源
 
-Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前68项Python与71项JS测试覆盖关键算法、异常保留、矩阵、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
+Python标准库、原生JavaScript/SVG，无依赖安装、API密钥或本地采集守护进程。开发验证：`python3 -B -m unittest discover -s tests`、`node --test tests/*.cjs`、`python3 -B build_site.py --hosted`。当前73项Python与74项JS测试覆盖关键算法、异常保留、矩阵、CSV及实际数据渲染。发布目录使用显式文件清单，不包含采集源码和原始审计目录；公开GitHub仓库仍会包含仓库内的项目源码和行情数据。
 
 上述为已实现范围，以下保留早期模块的详细操作说明，不表示整个长期系统已经完成。未接入付费聚合源、持续WebSocket、全市场强平、订单流、做市商净GEX或经过检验的综合评分。
 
@@ -171,3 +171,5 @@ node --check app.js
 The overview now compares five real OKX series on a common time axis: mark price (USDT), OI (coin), settled funding (% per settlement), perpetual premium (USDT index), and one explicitly named USD inverse expiry contract basis (%). Select BTC/ETH and 24h/7d/30d. Each panel retains its own unit and freshness metadata. No composite score, historical backfill or continuous contract splice is generated. Existing seven pages are retained.
 
 总览首屏采用六模块图表墙（桌面2列×3行），注释与详细监测在下方；强平主图提供真实观察样本密度热力图，潜在清算模型数据尚未接入。
+
+BTC未平仓量新增真实5分钟历史回补与已完成5分钟标记价K线，6h/24h/3d/5d切换、CSV导出；首次约5天，以后按小时增量补采。详见OI_MINUTES.md。
