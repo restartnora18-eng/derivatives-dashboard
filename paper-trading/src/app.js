@@ -29,6 +29,15 @@ let engine,
   bucket = null,
   lastFundingBucket = null;
 const market = new BinanceMarket();
+const ACCOUNT_LOCK = 'kimra-paper-account-writer';
+const accountChannel = typeof BroadcastChannel === 'function' ? new BroadcastChannel('kimra-paper-account-control') : null;
+let ownsAccount = false;
+let accountReady = false;
+let releasingAccount = false;
+let releaseAccount = null;
+function setTradingEnabled(enabled) {
+  document.querySelectorAll('.actions button, #quantity').forEach(control => { control.disabled = !enabled; });
+}
 function status(s) {
   $("#status").textContent = s;
 }
@@ -41,6 +50,7 @@ function download(blob, name) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 function makeChart() {
+  if (chart || $("#fallback")) return;
   if (!window.LightweightCharts) {
     const c = document.createElement("canvas");
     c.id = "fallback";
@@ -221,7 +231,7 @@ async function persist() {
   }
 }
 async function onQuote(q) {
-  if (storageFailed) return;
+  if (storageFailed || !ownsAccount) return;
   quote = q;
   try {
     $("#connection").textContent =
@@ -267,7 +277,7 @@ async function onQuote(q) {
 }
 for (const action of ["long", "short", "reduce", "close"])
   $("#" + action).onclick = async () => {
-    if (storageFailed) return;
+    if (storageFailed || !ownsAccount) return;
     if (pending) {
       status("Order pending; waiting for a fresh quote.");
       return;
@@ -425,10 +435,12 @@ $("#report").onclick = () => {
 async function boot() {
   try {
     const snapshot = await load();
+    if (!ownsAccount) return;
     engine = snapshot
       ? new Engine(snapshot.config, snapshot.state)
       : new Engine();
     engine.state.market = "binance-usdm-BTCUSDT";
+    accountReady = true;
     candles = engine.state.candles || [];
     makeChart();
     drawEquity();
@@ -438,6 +450,7 @@ async function boot() {
       render();
     }
     await persist();
+    if (!ownsAccount) return;
     status("Connecting to Binance…");
     await market.start(onQuote, (error) => {
       pending = null;
@@ -448,6 +461,7 @@ async function boot() {
     });
     document.addEventListener("visibilitychange", () => {
       if (
+        ownsAccount &&
         document.visibilityState === "visible" &&
         market.nextUpdate &&
         Date.now() >= market.nextUpdate
@@ -462,29 +476,71 @@ async function boot() {
     status("Startup failed: " + e.message);
   }
 }
-if (navigator.locks) {
-  navigator.locks.request(
-    "kimra-paper-account-writer",
-    { ifAvailable: true },
-    async (lock) => {
-      if (!lock) {
-        status("Account is open in another tab. Close it and reload.");
-        document
-          .querySelectorAll("button,input")
-          .forEach((e) => (e.disabled = true));
-        return;
-      }
-      await boot();
-      await new Promise(() => {});
-    },
-  );
-} else {
-  status("Account locking is unavailable. Use a current Chrome or Safari browser.");
-  document.querySelectorAll("button,input").forEach((e) => (e.disabled = true));
+// Always draw saved data before waiting for the single-writer lock.
+// Opening a second tab must never leave both chart panels empty.
+async function showSavedAccount() {
+  const snapshot = await load();
+  engine = snapshot ? new Engine(snapshot.config, snapshot.state) : new Engine();
+  candles = engine.state.candles || [];
+  makeChart();
+  series?.setData(candles);
+  drawEquity();
+  if (engine.state.lastQuote) {
+    quote = engine.state.lastQuote;
+    updateCandles(quote);
+    render();
+  }
 }
+if (accountChannel) accountChannel.onmessage = async event => {
+  if (event.data !== 'request-control' || !ownsAccount || !accountReady || releasingAccount || storageFailed) return;
+  releasingAccount = true;
+  try {
+    // Ignore an already-delivered request once no other tab is waiting.
+    const locks = await navigator.locks.query();
+    if (!locks.pending.some(lock => lock.name === ACCOUNT_LOCK)) return;
+    ownsAccount = false;
+    pending = null;
+    setTradingEnabled(false);
+    market.stop();
+    if (market.inflight) await market.inflight.catch(() => {});
+    await persist();
+    if (storageFailed) return;
+    accountReady = false;
+    releaseAccount?.();
+    releaseAccount = null;
+    status('Saved view. Reload to trade in this tab.');
+  } catch (error) { status('Account handover failed: ' + error.message); }
+  finally { releasingAccount = false; }
+};
+async function startAccount() {
+  setTradingEnabled(false);
+  try {
+    await showSavedAccount();
+    if (!navigator.locks) {
+      status('Read-only saved view. A current Chrome or Safari browser is required.');
+      return;
+    }
+    status('Loading account. If another old tab is open, close it to continue.');
+    const notifyOwner = () => accountChannel?.postMessage('request-control');
+    const notifyTimer = setInterval(notifyOwner, 1000);
+    try {
+      const ownership = navigator.locks.request(ACCOUNT_LOCK, async () => {
+        clearInterval(notifyTimer);
+        ownsAccount = true;
+        const released = new Promise(resolve => { releaseAccount = resolve; });
+        setTradingEnabled(true);
+        await boot();
+        await released;
+      });
+      notifyOwner();
+      await ownership;
+    } finally { clearInterval(notifyTimer); }
+  } catch (error) { status('Account startup failed: ' + error.message); }
+}
+startAccount();
 
 $("#refresh").onclick = async () => {
-  if (storageFailed) return;
+  if (storageFailed || !ownsAccount) return;
   $("#refresh").disabled = true;
   status("Fetching Binance data…");
   try {
