@@ -6,6 +6,7 @@ on:
       - 'data/**'
       - 'funding-data.js'
       - 'history-data.js'
+      - 'binance-oi-minutes.json'
   pull_request:
 
 permissions:

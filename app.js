@@ -91,9 +91,9 @@ function render() {
     return;
   }
   if (id === 'oi') {
-    document.querySelector('#time').textContent = 'BTC分钟历史尝试：' + date(window.OI_MINUTES_DATA?.attempted_at);
+    document.querySelector('#time').textContent = 'Binance 数据请求：' + date(window.BINANCE_OI_MINUTES_DATA?.attempted_at);
     document.querySelector('#methodology').textContent = 'OI：单一交易所 USDT 永续合约；原始单位分别展示，不推断多空方向。';
-    document.querySelector('#notice-label').textContent = '◷ BTC · 真实5分钟历史 · 云端按小时补采';
+    document.querySelector('#notice-label').textContent = '◷ Binance BTCUSDT · 每5分钟自动更新 · 北京时间 UTC+8';
     window.renderMinuteOI(content);
     return;
   }

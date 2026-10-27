@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC_FILES = (
+    "binance-market.js", "binance-oi-minutes.json",
     "index.html", "kimra-logo.png", "styles.css", "app.js", "snapshot.js", "funding-data.js",
     "funding-matrix.js", "overview-wall.js", "analysis-export.js", "percentile-ui.js", "option-positions-data.js", "option-positions-ui.js", "book-simulator.js", "liquidations-data.js", "liquidations-ui.js", "liquidation-heatmap.js", "orderbook-data.js", "orderbook-ui.js", "liquidity-ui.js", "options-data.js", "options-ui.js", "summary-ui.js", "futures-data.js", "futures-ui.js", "basis-data.js", "basis-ui.js", "price-data.js", "oi-data.js", "oi-ui.js", "oi-minutes-data.js", "oi-minutes-ui.js", "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
 )
@@ -69,7 +70,7 @@ def build_site(root=ROOT, hosted=False):
         for filename in (*PUBLIC_FILES, *paper_files):
             (stage / filename).parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(root / filename, stage / filename)
-        runtime = {"hosted": hosted, "expected_refresh_minutes": 60}
+        runtime = {"hosted": hosted, "expected_refresh_minutes": 60, "binance_oi_refresh_minutes": 5, "time_zone": "Asia/Shanghai"}
         (stage / "runtime-config.js").write_text("window.DASHBOARD_RUNTIME = " + json.dumps(runtime) + ";\n", encoding="utf-8")
         (stage / ".nojekyll").write_text("", encoding="utf-8")
         if dist.exists():
