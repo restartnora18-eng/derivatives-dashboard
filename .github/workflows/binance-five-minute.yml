@@ -1,18 +1,10 @@
-name: Refresh Binance BTC every 5 minutes
+name: Collect Binance snapshot manually
 
+# GitHub-hosted runner returned HTTP 451 from Binance during deployment.
+# Keep this explicit manual diagnostic; do not repeatedly schedule denied requests.
+# The open browser page continues to fetch official Binance data every five minutes.
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/binance-five-minute.yml'
-      - 'collect_binance_oi_minutes.py'
-      - 'binance-market.js'
-      - 'oi-minutes-ui.js'
-      - 'tests/binance-market.cjs'
-      - 'tests/test_binance_oi_minutes.py'
 
 permissions:
   contents: read
