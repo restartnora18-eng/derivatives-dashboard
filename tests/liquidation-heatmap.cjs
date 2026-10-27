@@ -21,3 +21,7 @@ test('potential-distribution tab remains explicitly unconnected and disables exp
  c.window.LIQUIDATIONS_DATA={records:[],states:{}};c.window.PRICE_DATA={records:[]};c.window.renderLiquidations=()=>{};
  c.window.renderLiquidationHeatmap({innerHTML:'',querySelector:k=>nodes[k]});nodes['#heat-liq-model'].handlers.click();assert.match(nodes['#heat-liq-chart'].innerHTML,/暂不绘制估算色带/);assert.equal(nodes['#heat-liq-export'].disabled,true);nodes['#heat-liq-observed'].handlers.click();assert.equal(nodes['#heat-liq-export'].disabled,false);
 });
+test('five-minute candle line keeps missing slots visible and 24-hour event bins use five minutes',()=>{
+ const prices=[{symbol:'BTC',price:100,time:'2026-10-26T13:00:00Z',interval_minutes:5},{symbol:'BTC',price:101,time:'2026-10-26T13:10:00Z',interval_minutes:5}];
+ const m=model([r],prices,'BTC',1,'all',now);assert.equal(m.columns,288);assert.equal((svg(m,'BTC').match(/<path d=/g)||[]).length,2);
+});

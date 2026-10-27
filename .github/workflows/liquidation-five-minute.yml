@@ -1,0 +1,104 @@
+name: Refresh liquidation data every 5 minutes
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/liquidation-five-minute.yml'
+      - 'collect_liquidation_minutes.py'
+      - 'liquidation-market.js'
+      - 'liquidation-heatmap.js'
+
+permissions:
+  contents: read
+
+# Serialize against the existing hourly collector and its Pages deployment.
+concurrency:
+  group: derivatives-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    outputs:
+      unhealthy: ${{ steps.health.outputs.unhealthy }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify liquidation samples and completed candle history
+        run: |
+          python -B -m unittest discover -s tests -p 'test_liquidation_minutes.py' -v
+          node --check liquidation-market.js
+          node --test tests/liquidation-market.cjs tests/liquidation-heatmap.cjs
+      - name: Collect OKX public samples and mark-price candles
+        run: python -B collect_liquidation_minutes.py
+      - name: Build public website
+        run: python -B build_site.py --hosted
+      - name: Save verified liquidation records and failure states
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/liquidations/series.json data/liquidation-prices/series.json liquidations-data.js liquidation-minutes.json
+          if ! git diff --staged --quiet; then
+            git commit -m 'chore: refresh five-minute liquidation data'
+            git push
+          fi
+      - name: Record collection health
+        id: health
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          data = json.loads(Path('liquidation-minutes.json').read_text())
+          unhealthy = any(s.get('status') != 'ok' for key in ('liquidations', 'prices') for s in data[key]['states'].values())
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('unhealthy=' + str(unhealthy).lower() + '\n')
+          print(json.dumps({k: data[k]['states'] for k in ('liquidations', 'prices')}))
+          PY
+      - name: Upload Pages package
+        if: vars.ENABLE_PAGES == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/
+  deploy:
+    if: vars.ENABLE_PAGES == 'true'
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy website with real source timestamps
+        id: deployment
+        uses: actions/deploy-pages@v4
+  health:
+    needs: [update, deploy]
+    if: always() && needs.update.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Surface source or deployment failures after publishing status
+        env:
+          UNHEALTHY: ${{ needs.update.outputs.unhealthy }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+        run: |
+          if [ "$UNHEALTHY" = 'true' ] || [ "$DEPLOY_RESULT" = 'failure' ]; then
+            echo 'Liquidation collection or deployment failed. Original timestamps and error statuses are retained.'
+            exit 1
+          fi

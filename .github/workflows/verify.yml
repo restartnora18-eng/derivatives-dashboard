@@ -7,6 +7,8 @@ on:
       - 'funding-data.js'
       - 'history-data.js'
       - 'binance-oi-minutes.json'
+      - 'liquidation-minutes.json'
+      - 'liquidations-data.js'
   pull_request:
 
 permissions:

@@ -64,7 +64,7 @@ function render() {
   }
   if (id === 'liquidations') {
     document.querySelector('#time').textContent = '样本尝试时间：' + date(window.LIQUIDATIONS_DATA?.attempted_at);
-    document.querySelector('#notice-label').textContent = '◷ 实验性强平样本 · 不代表完整强平总量';
+    document.querySelector('#notice-label').textContent = '◷ 强平样本每5分钟更新 · 北京时间 UTC+8 · 非完整市场总量';
     document.querySelector('#methodology').textContent = '仅限有界REST观察样本，接口已退出正式文档；不换算或展示全市场强平金额。';
     window.renderLiquidationHeatmap(content);
     return;
