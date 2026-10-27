@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-27T07:25:14.367Z",
+  "attempted_at": "2026-10-27T10:37:44.158Z",
   "index_endpoint": "https://www.okx.com/api/v5/market/index-tickers",
   "mark_endpoint": "https://www.okx.com/api/v5/public/mark-price",
   "states": {
@@ -1060,6 +1060,36 @@
       "index_time": "2026-10-27T07:25:12.230Z",
       "skew_seconds": 2.046,
       "fetched_at": "2026-10-27T07:25:14.367Z"
+    },
+    {
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "index_id": "BTC-USDT",
+      "mark": 79666.3,
+      "index": 79696.4,
+      "spread": -30.09999999999127,
+      "premium_pct": -0.03776833081543529,
+      "time": "2026-10-27T10:37:43.980Z",
+      "mark_time": "2026-10-27T10:37:43.980Z",
+      "index_time": "2026-10-27T10:37:42.669Z",
+      "skew_seconds": 1.311,
+      "fetched_at": "2026-10-27T10:37:44.158Z"
+    },
+    {
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "index_id": "ETH-USDT",
+      "mark": 2306.06,
+      "index": 2306.92,
+      "spread": -0.8600000000001273,
+      "premium_pct": -0.037279142753110506,
+      "time": "2026-10-27T10:37:44.105Z",
+      "mark_time": "2026-10-27T10:37:44.105Z",
+      "index_time": "2026-10-27T10:37:43.717Z",
+      "skew_seconds": 0.388,
+      "fetched_at": "2026-10-27T10:37:44.158Z"
     }
   ]
 }
