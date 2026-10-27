@@ -4,3 +4,15 @@ __pycache__/
 .venv/
 dist/
 .build-*/
+
+# Local credentials and personal working files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+CHECKPOINT.md
+work/
+*.log

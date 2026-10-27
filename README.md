@@ -1,4 +1,6 @@
-# 衍生观察：加密货币衍生品监测
+# Kimra·Quantlab
+
+加密货币衍生品研究工作台。作者：花躲。
 
 公开副本目标仓库为 `restartnora18-eng/derivatives-dashboard`。项目文件不继承原私人仓库的 Git 提交历史；新提交使用 GitHub 隐私邮箱。当前费率按小时计划更新，历史约每 8 小时刷新。
 线上地址：https://restartnora18-eng.github.io/derivatives-dashboard/ 。运行与发布说明见 [DEPLOY.md](DEPLOY.md)，阶段进度见 [ROADMAP.md](ROADMAP.md)。
