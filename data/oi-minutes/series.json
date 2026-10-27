@@ -3,19 +3,19 @@
   "contract": "BTC-USDT-SWAP",
   "venue": "okx",
   "interval_minutes": 5,
-  "attempted_at": "2026-10-27T01:03:08.665Z",
+  "attempted_at": "2026-10-27T01:12:03.576Z",
   "states": {
     "oi": {
       "status": "ok",
-      "pages": 15,
-      "received": 1440,
+      "pages": 1,
+      "received": 100,
       "rejected": 0,
       "backfill_finished": true
     },
     "prices": {
       "status": "ok",
-      "pages": 15,
-      "received": 1499,
+      "pages": 1,
+      "received": 99,
       "rejected": 0,
       "backfill_finished": true
     }
@@ -8660,10 +8660,16 @@
       "time": "2026-10-27T00:55:00.000Z"
     },
     {
-      "contracts": 3178573.5900000143,
-      "coin": 31785.77350000014,
-      "usd": 2549241284.7414613,
+      "contracts": 3178363.930000014,
+      "coin": 31783.63930000014,
+      "usd": 2549953705.5800614,
       "time": "2026-10-27T01:00:00.000Z"
+    },
+    {
+      "contracts": 3179591.3700000145,
+      "coin": 31795.913700000146,
+      "usd": 2552439229.4071016,
+      "time": "2026-10-27T01:05:00.000Z"
     }
   ],
   "prices": [
@@ -22157,6 +22163,24 @@
       "time": "2026-10-27T01:00:00.000Z",
       "opened_at": "2026-10-27T00:55:00.000Z",
       "price": 80199.7
+    },
+    {
+      "open": 80199.6,
+      "high": 80262.3,
+      "low": 80191.3,
+      "close": 80231.2,
+      "time": "2026-10-27T01:05:00.000Z",
+      "opened_at": "2026-10-27T01:00:00.000Z",
+      "price": 80231.2
+    },
+    {
+      "open": 80231.2,
+      "high": 80320.9,
+      "low": 80207.6,
+      "close": 80268.0,
+      "time": "2026-10-27T01:10:00.000Z",
+      "opened_at": "2026-10-27T01:05:00.000Z",
+      "price": 80268.0
     }
   ]
 }
