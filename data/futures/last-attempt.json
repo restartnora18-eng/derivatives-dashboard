@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-26T19:57:49.489Z",
+  "attempted_at": "2026-10-26T23:55:24.349Z",
   "states": {
     "BTC": {
       "status": "ok",
@@ -370,38 +370,38 @@
           {
             "instId": "BTC-USD-270924",
             "instType": "FUTURES",
-            "markPx": "83880.7",
-            "ts": "1793044669703"
+            "markPx": "83990.6",
+            "ts": "1793058924696"
           },
           {
             "instId": "BTC-USD-270625",
             "instType": "FUTURES",
-            "markPx": "82781",
-            "ts": "1793044669703"
+            "markPx": "82893.4",
+            "ts": "1793058924696"
           },
           {
             "instId": "BTC-USD-270326",
             "instType": "FUTURES",
-            "markPx": "81673.4",
-            "ts": "1793044669703"
+            "markPx": "81803.6",
+            "ts": "1793058924696"
           },
           {
             "instId": "BTC-USD-261030",
             "instType": "FUTURES",
-            "markPx": "79939.4",
-            "ts": "1793044669703"
+            "markPx": "80060.6",
+            "ts": "1793058924696"
           },
           {
             "instId": "BTC-USD-261127",
             "instType": "FUTURES",
-            "markPx": "80276.8",
-            "ts": "1793044669703"
+            "markPx": "80392",
+            "ts": "1793058924696"
           },
           {
             "instId": "BTC-USD-261225",
             "instType": "FUTURES",
-            "markPx": "80607",
-            "ts": "1793044669703"
+            "markPx": "80718.1",
+            "ts": "1793058924696"
           }
         ],
         "msg": ""
@@ -411,13 +411,13 @@
         "data": [
           {
             "instId": "BTC-USD",
-            "idxPx": "79873.7",
+            "idxPx": "79982.5",
             "high24h": "80711.2",
             "low24h": "79264.6",
-            "open24h": "80466.1",
+            "open24h": "80063.6",
             "sodUtc0": "80051.7",
             "sodUtc8": "80300.6",
-            "ts": "1793044669054"
+            "ts": "1793058924656"
           }
         ],
         "msg": ""
@@ -778,38 +778,38 @@
           {
             "instId": "ETH-USD-270625",
             "instType": "FUTURES",
-            "markPx": "2384.71",
-            "ts": "1793044670113"
+            "markPx": "2390.9",
+            "ts": "1793058925388"
           },
           {
             "instId": "ETH-USD-270924",
             "instType": "FUTURES",
-            "markPx": "2412.18",
-            "ts": "1793044670113"
+            "markPx": "2418.59",
+            "ts": "1793058925388"
           },
           {
             "instId": "ETH-USD-270326",
             "instType": "FUTURES",
-            "markPx": "2354.34",
-            "ts": "1793044670113"
+            "markPx": "2359.98",
+            "ts": "1793058925388"
           },
           {
             "instId": "ETH-USD-261225",
             "instType": "FUTURES",
-            "markPx": "2329.59",
-            "ts": "1793044670113"
+            "markPx": "2335.24",
+            "ts": "1793058925388"
           },
           {
             "instId": "ETH-USD-261030",
             "instType": "FUTURES",
-            "markPx": "2314.43",
-            "ts": "1793044670113"
+            "markPx": "2319.88",
+            "ts": "1793058925388"
           },
           {
             "instId": "ETH-USD-261127",
             "instType": "FUTURES",
-            "markPx": "2321.64",
-            "ts": "1793044670113"
+            "markPx": "2327.24",
+            "ts": "1793058925388"
           }
         ],
         "msg": ""
@@ -819,13 +819,13 @@
         "data": [
           {
             "instId": "ETH-USD",
-            "idxPx": "2313.66",
-            "high24h": "2349.8",
+            "idxPx": "2319.19",
+            "high24h": "2340.44",
             "low24h": "2290.07",
-            "open24h": "2347.65",
+            "open24h": "2327.66",
             "sodUtc0": "2326.91",
             "sodUtc8": "2324.46",
-            "ts": "1793044669108"
+            "ts": "1793058925103"
           }
         ],
         "msg": ""
