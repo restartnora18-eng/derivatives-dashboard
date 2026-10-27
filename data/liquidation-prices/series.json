@@ -2,7 +2,7 @@
   "venue": "okx",
   "interval_minutes": 5,
   "endpoint": "https://www.okx.com/api/v5/market/history-mark-price-candles",
-  "attempted_at": "2026-10-27T12:26:59.440Z",
+  "attempted_at": "2026-10-27T12:31:52.372Z",
   "records": [
     {
       "open": 80356.9,
@@ -7491,19 +7491,45 @@
       "contract": "ETH-USDT-SWAP",
       "venue": "okx",
       "interval_minutes": 5
+    },
+    {
+      "open": 80084.3,
+      "high": 80229.9,
+      "low": 80077.2,
+      "close": 80229.8,
+      "time": "2026-10-27T12:30:00.000Z",
+      "opened_at": "2026-10-27T12:25:00.000Z",
+      "price": 80229.8,
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "interval_minutes": 5
+    },
+    {
+      "open": 2321.83,
+      "high": 2327.62,
+      "low": 2321.81,
+      "close": 2326.85,
+      "time": "2026-10-27T12:30:00.000Z",
+      "opened_at": "2026-10-27T12:25:00.000Z",
+      "price": 2326.85,
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "interval_minutes": 5
     }
   ],
   "states": {
     "BTC": {
       "status": "ok",
-      "pages": 3,
-      "received": 288,
+      "pages": 1,
+      "received": 99,
       "rejected": 0
     },
     "ETH": {
       "status": "ok",
-      "pages": 3,
-      "received": 288,
+      "pages": 1,
+      "received": 99,
       "rejected": 0
     }
   }
