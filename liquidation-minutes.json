@@ -3,7 +3,7 @@
   "venue": "okx",
   "interval_minutes": 5,
   "liquidations": {
-    "attempted_at": "2026-10-27T12:31:52.376Z",
+    "attempted_at": "2026-10-27T12:34:46.399Z",
     "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
     "experimental": true,
     "coverage": "bounded_rest_observations_only",
@@ -15,7 +15,7 @@
         "accepted": 100,
         "rejected": 0,
         "limit_reached": true,
-        "new_observed": 28
+        "new_observed": 0
       },
       "ETH": {
         "status": "ok",
@@ -24,7 +24,7 @@
         "accepted": 100,
         "rejected": 0,
         "limit_reached": true,
-        "new_observed": 2
+        "new_observed": 0
       }
     },
     "storage_truncated": false,
@@ -32488,6 +32488,186 @@
         "bankruptcy_price": 2326.63,
         "raw_sz": "2.94",
         "first_seen": "2026-10-27T12:31:52.376Z"
+      },
+      {
+        "id": "b186cb0d260358d8baf2c7a92fd598bd2a44706c15b219f85db773e6bb65d17e",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:10.853Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80242.3,
+        "raw_sz": "0.12",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "a8cc994f8a0f760224a7c0a25b1d27bb1dd062b4463dce506112faf607daa45d",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:13.949Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80245.9,
+        "raw_sz": "0.09",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "ac7d569ff9381ea3555e05c85e9f7825ecc2183d930016def77efab8bb4c31fc",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:13.982Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80245.9,
+        "raw_sz": "1.72",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "0e384b4823695c658cd055cd18f3f33eed77eaf9c046b5cb71db930874e2f11a",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.035Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80245.9,
+        "raw_sz": "0.22",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "c50210b7de2f2a6aa508fdcaf1fbcad89a8ce1f7e1ade7200e914d7de5c081ba",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.077Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80251.7,
+        "raw_sz": "0.07",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "6b67d5d044230ce565534aee85ec0b45e63aa6db9b19cb5904d305023f25fcde",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.113Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80251.7,
+        "raw_sz": "0.21",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "3bbad4bb0e6bb958368b2e3d3fd8d1b7bf2f63e8f74ab2e351aa581028593edb",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.126Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80251.7,
+        "raw_sz": "0.62",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "e6f292610bf05c79b9750d718dd11da73a7b90d5c4a2e1e7503f8cb24234154f",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.194Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80251.7,
+        "raw_sz": "0.42",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "aad153d112bb3ed533a3f4a1fe4e28fb65167764c9c375f811f04409e23f1e50",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:14.261Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80251.7,
+        "raw_sz": "0.5",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "f8cca16af2a90ae7595d8966fe0f29ada4c2ca24615974c421ab782059512cb8",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:26.600Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80255.0,
+        "raw_sz": "0.01",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "60ce6bd3d9cd082fb6ff4d79ab8730e4aea1ddc87e5e1f3465042248246dfe7f",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:32.530Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80258.6,
+        "raw_sz": "1.38",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "27505faff9654c681ecf822d0e4160adef4f0f432477c958d756822078facadf",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:32.881Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80259.1,
+        "raw_sz": "14.71",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "258a511c05c06423205c99a605cd2963207df9fb81d2bdd4e1f057c412eeb43b",
+        "symbol": "ETH",
+        "contract": "ETH-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:32.943Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 2327.32,
+        "raw_sz": "0.04",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "7809980807d4b7dc507c9d8343968cd279cfd62c7ceaed1c50fefc1489818761",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:33.273Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80271.2,
+        "raw_sz": "0.82",
+        "first_seen": "2026-10-27T12:33:15.917Z"
+      },
+      {
+        "id": "31da8857bbbcab02dfb8e81ed4d14981eac310e9733898f4a18e33cc959a6578",
+        "symbol": "BTC",
+        "contract": "BTC-USDT-SWAP",
+        "venue": "okx",
+        "time": "2026-10-27T12:32:33.327Z",
+        "pos_side": "short",
+        "order_side": "buy",
+        "bankruptcy_price": 80271.2,
+        "raw_sz": "7",
+        "first_seen": "2026-10-27T12:33:15.917Z"
       }
     ],
     "attempts": [
@@ -33066,6 +33246,42 @@
         "new_shorts": 2,
         "returned": 100,
         "limit_reached": true
+      },
+      {
+        "symbol": "BTC",
+        "time": "2026-10-27T12:33:15.917Z",
+        "new_observed": 14,
+        "new_longs": 0,
+        "new_shorts": 14,
+        "returned": 100,
+        "limit_reached": true
+      },
+      {
+        "symbol": "ETH",
+        "time": "2026-10-27T12:33:15.917Z",
+        "new_observed": 1,
+        "new_longs": 0,
+        "new_shorts": 1,
+        "returned": 100,
+        "limit_reached": true
+      },
+      {
+        "symbol": "BTC",
+        "time": "2026-10-27T12:34:46.399Z",
+        "new_observed": 0,
+        "new_longs": 0,
+        "new_shorts": 0,
+        "returned": 100,
+        "limit_reached": true
+      },
+      {
+        "symbol": "ETH",
+        "time": "2026-10-27T12:34:46.399Z",
+        "new_observed": 0,
+        "new_longs": 0,
+        "new_shorts": 0,
+        "returned": 100,
+        "limit_reached": true
       }
     ]
   },
@@ -33073,7 +33289,7 @@
     "venue": "okx",
     "interval_minutes": 5,
     "endpoint": "https://www.okx.com/api/v5/market/history-mark-price-candles",
-    "attempted_at": "2026-10-27T12:31:52.372Z",
+    "attempted_at": "2026-10-27T12:34:46.392Z",
     "records": [
       {
         "open": 80356.9,

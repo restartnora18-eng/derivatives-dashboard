@@ -2,7 +2,7 @@
   "venue": "okx",
   "interval_minutes": 5,
   "endpoint": "https://www.okx.com/api/v5/market/history-mark-price-candles",
-  "attempted_at": "2026-10-27T12:31:52.372Z",
+  "attempted_at": "2026-10-27T12:34:46.392Z",
   "records": [
     {
       "open": 80356.9,
