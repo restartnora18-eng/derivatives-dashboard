@@ -2,8 +2,8 @@
 window.FUNDING_DATA = {
   "snapshot": {
     "schema_version": 2,
-    "run_started_at": "2026-10-27T01:16:38.012Z",
-    "captured_at": "2026-10-27T01:16:39.212Z",
+    "run_started_at": "2026-10-27T01:23:03.012Z",
+    "captured_at": "2026-10-27T01:23:04.203Z",
     "max_source_age_seconds": 5400,
     "scope": {
       "bases": [
@@ -79,8 +79,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "estimated_upcoming",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:18.451Z",
-        "fetched_at": "2026-10-27T01:16:38.549Z",
+        "source_time": "2026-10-27T01:22:15.420Z",
+        "fetched_at": "2026-10-27T01:23:03.533Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "settlement",
         "warnings": [],
@@ -101,11 +101,11 @@ window.FUNDING_DATA = {
               "minFundingRate": "-0.00375",
               "nextFundingRate": "",
               "nextFundingTime": "1793116800000",
-              "premium": "-0.0003026498677307",
+              "premium": "-0.0002882819022611",
               "prevFundingTime": "1793059200000",
               "settFundingRate": "0.0001000000000000",
               "settState": "settled",
-              "ts": "1793063778451"
+              "ts": "1793064135420"
             }
           ],
           "msg": ""
@@ -127,8 +127,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "estimated_upcoming",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:18.519Z",
-        "fetched_at": "2026-10-27T01:16:38.743Z",
+        "source_time": "2026-10-27T01:22:15.463Z",
+        "fetched_at": "2026-10-27T01:23:03.695Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "settlement",
         "warnings": [],
@@ -149,11 +149,11 @@ window.FUNDING_DATA = {
               "minFundingRate": "-0.0075",
               "nextFundingRate": "",
               "nextFundingTime": "1793116800000",
-              "premium": "-0.0004593792798478",
+              "premium": "-0.0004260428366707",
               "prevFundingTime": "1793059200000",
               "settFundingRate": "0.0001000000000000",
               "settState": "settled",
-              "ts": "1793063778519"
+              "ts": "1793064135463"
             }
           ],
           "msg": ""
@@ -175,8 +175,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "published_current",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:38.947Z",
-        "fetched_at": "2026-10-27T01:16:39.015Z",
+        "source_time": "2026-10-27T01:23:03.956Z",
+        "fetched_at": "2026-10-27T01:23:04.015Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "next_update",
         "warnings": [],
@@ -184,7 +184,7 @@ window.FUNDING_DATA = {
         "raw_response": {
           "code": "00000",
           "msg": "success",
-          "requestTime": 1793063798947,
+          "requestTime": 1793064183956,
           "data": [
             {
               "symbol": "BTCUSDT",
@@ -219,8 +219,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "published_current",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:39.142Z",
-        "fetched_at": "2026-10-27T01:16:39.212Z",
+        "source_time": "2026-10-27T01:23:04.140Z",
+        "fetched_at": "2026-10-27T01:23:04.203Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "next_update",
         "warnings": [],
@@ -228,7 +228,7 @@ window.FUNDING_DATA = {
         "raw_response": {
           "code": "00000",
           "msg": "success",
-          "requestTime": 1793063799142,
+          "requestTime": 1793064184140,
           "data": [
             {
               "symbol": "ETHUSDT",
@@ -252,8 +252,8 @@ window.FUNDING_DATA = {
   },
   "last_attempt": {
     "schema_version": 2,
-    "run_started_at": "2026-10-27T01:16:38.012Z",
-    "captured_at": "2026-10-27T01:16:39.212Z",
+    "run_started_at": "2026-10-27T01:23:03.012Z",
+    "captured_at": "2026-10-27T01:23:04.203Z",
     "max_source_age_seconds": 5400,
     "scope": {
       "bases": [
@@ -329,8 +329,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "estimated_upcoming",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:18.451Z",
-        "fetched_at": "2026-10-27T01:16:38.549Z",
+        "source_time": "2026-10-27T01:22:15.420Z",
+        "fetched_at": "2026-10-27T01:23:03.533Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "settlement",
         "warnings": [],
@@ -351,11 +351,11 @@ window.FUNDING_DATA = {
               "minFundingRate": "-0.00375",
               "nextFundingRate": "",
               "nextFundingTime": "1793116800000",
-              "premium": "-0.0003026498677307",
+              "premium": "-0.0002882819022611",
               "prevFundingTime": "1793059200000",
               "settFundingRate": "0.0001000000000000",
               "settState": "settled",
-              "ts": "1793063778451"
+              "ts": "1793064135420"
             }
           ],
           "msg": ""
@@ -377,8 +377,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "estimated_upcoming",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:18.519Z",
-        "fetched_at": "2026-10-27T01:16:38.743Z",
+        "source_time": "2026-10-27T01:22:15.463Z",
+        "fetched_at": "2026-10-27T01:23:03.695Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "settlement",
         "warnings": [],
@@ -399,11 +399,11 @@ window.FUNDING_DATA = {
               "minFundingRate": "-0.0075",
               "nextFundingRate": "",
               "nextFundingTime": "1793116800000",
-              "premium": "-0.0004593792798478",
+              "premium": "-0.0004260428366707",
               "prevFundingTime": "1793059200000",
               "settFundingRate": "0.0001000000000000",
               "settState": "settled",
-              "ts": "1793063778519"
+              "ts": "1793064135463"
             }
           ],
           "msg": ""
@@ -425,8 +425,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "published_current",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:38.947Z",
-        "fetched_at": "2026-10-27T01:16:39.015Z",
+        "source_time": "2026-10-27T01:23:03.956Z",
+        "fetched_at": "2026-10-27T01:23:04.015Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "next_update",
         "warnings": [],
@@ -434,7 +434,7 @@ window.FUNDING_DATA = {
         "raw_response": {
           "code": "00000",
           "msg": "success",
-          "requestTime": 1793063798947,
+          "requestTime": 1793064183956,
           "data": [
             {
               "symbol": "BTCUSDT",
@@ -469,8 +469,8 @@ window.FUNDING_DATA = {
         "annualized_percent": 10.950000000000001,
         "rate_kind": "published_current",
         "source_rate_field": "fundingRate",
-        "source_time": "2026-10-27T01:16:39.142Z",
-        "fetched_at": "2026-10-27T01:16:39.212Z",
+        "source_time": "2026-10-27T01:23:04.140Z",
+        "fetched_at": "2026-10-27T01:23:04.203Z",
         "funding_time": "2026-10-27T08:00:00.000Z",
         "funding_time_label": "next_update",
         "warnings": [],
@@ -478,7 +478,7 @@ window.FUNDING_DATA = {
         "raw_response": {
           "code": "00000",
           "msg": "success",
-          "requestTime": 1793063799142,
+          "requestTime": 1793064184140,
           "data": [
             {
               "symbol": "ETHUSDT",
