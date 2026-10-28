@@ -1,0 +1,7 @@
+{
+  "provider": "native",
+  "exchange": "okx",
+  "symbol": "BTC/USDT:USDT",
+  "timeframe": "5m",
+  "limit": 20
+}

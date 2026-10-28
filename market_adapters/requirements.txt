@@ -1,0 +1,2 @@
+# Optional. Native mode does not require this package. Python >=3.10.
+ccxt==4.5.90
