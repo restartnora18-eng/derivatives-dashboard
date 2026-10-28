@@ -19,7 +19,8 @@ def compare(left, right):
     for identity in a.keys() & b.keys():
         for field in a[identity].keys() & b[identity].keys():
             x, y = a[identity][field], b[identity][field]
-            equal = math.isclose(x, y, rel_tol=1e-8, abs_tol=1e-10) if isinstance(x, (int, float)) and isinstance(y, (int, float)) else x == y
+            exact_time = field in ('timestamp', 'opened_at_ms', 'closed_at_ms')
+            equal = math.isclose(x, y, rel_tol=1e-8, abs_tol=1e-10) if not exact_time and isinstance(x, (int, float)) and isinstance(y, (int, float)) else x == y
             if not equal:
                 differences.append({'record': identity, 'field': field, 'native': x, 'ccxt': y})
     common = len(a.keys() & b.keys())

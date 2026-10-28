@@ -174,3 +174,6 @@ class ReadOnlyTests(unittest.TestCase):
         self.assertEqual(result['differences'], [])
         self.assertFalse(compare(a, {'error':{'code':'http_451'}})['comparable'])
         self.assertFalse(compare(a, dict(b, exchange='binance'))['comparable'])
+        trades_a, trades_b = self.native().read('trades'), self.sdk()[0].read('trades')
+        trades_b['records'][0]['timestamp'] += 1
+        self.assertTrue(any(d['field'] == 'timestamp' for d in compare(trades_a, trades_b)['differences']))
