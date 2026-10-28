@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-28T03:30:41.153Z",
+  "attempted_at": "2026-10-28T03:32:39.783Z",
   "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
   "experimental": true,
   "coverage": "bounded_rest_observations_only",
@@ -11,7 +11,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 23
+      "new_observed": 2
     },
     "ETH": {
       "status": "ok",
@@ -20,7 +20,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 100
+      "new_observed": 1
     }
   },
   "storage_truncated": false,
@@ -40764,6 +40764,42 @@
       "bankruptcy_price": 2363.01,
       "raw_sz": "8.36",
       "first_seen": "2026-10-28T03:30:41.153Z"
+    },
+    {
+      "id": "cf9498f7741992f3a51581936c293532070cb99225ca4c5ed72af6ce7152a3e6",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-28T03:32:35.934Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2364.86,
+      "raw_sz": "4.48",
+      "first_seen": "2026-10-28T03:32:39.783Z"
+    },
+    {
+      "id": "f4c6286fbd15b60740239ed8a9a7adb8ddde8de527dae5e8814a9d6976ddd8a7",
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-28T03:32:35.934Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 81125.4,
+      "raw_sz": "8.85",
+      "first_seen": "2026-10-28T03:32:39.783Z"
+    },
+    {
+      "id": "65c97220ea1d40f5f2f0bc82ba21db35c9fe89469e4895a299e0379ecf58e0d5",
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-28T03:32:39.227Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 81135.2,
+      "raw_sz": "0.12",
+      "first_seen": "2026-10-28T03:32:39.783Z"
     }
   ],
   "attempts": [
@@ -41520,6 +41556,24 @@
       "new_observed": 100,
       "new_longs": 1,
       "new_shorts": 99,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-10-28T03:32:39.783Z",
+      "new_observed": 2,
+      "new_longs": 0,
+      "new_shorts": 2,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-10-28T03:32:39.783Z",
+      "new_observed": 1,
+      "new_longs": 0,
+      "new_shorts": 1,
       "returned": 100,
       "limit_reached": true
     }
