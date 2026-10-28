@@ -10,6 +10,8 @@ on:
       - 'index.html'
       - 'styles.css'
       - 'app.js'
+      - 'market-chart.js'
+      - 'vendor/lightweight-charts/**'
       - 'overview-wall.js'
       - 'funding-matrix.js'
       - 'oi-ui.js'

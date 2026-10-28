@@ -1,6 +1,7 @@
 'use strict';
 const modules = [
   ['overview','◈','总览','关键指标与数据覆盖'],
+  ['charts','▥','行情图表','K 线、成交量与 MA20 · Binance 永续合约'],
   ['funding','↗','资金费率','排名、跨所比较与资金成本'],
   ['oi','◎','未平仓量','仓位规模、变化与多空结构'],
   ['basis','⌁','基差与期限','现货价差与期货期限结构'],
@@ -25,12 +26,15 @@ function getView() {
   return dataset === 'legacy' ? FundingModel.legacy(SNAPSHOT) : FundingModel.live(window.FUNDING_DATA);
 }
 
+let disposeMarketChart;
 function render() {
+  disposeMarketChart?.();
+  disposeMarketChart = undefined;
   let id = location.hash.slice(1) || 'overview';
   if (!modules.some(m => m[0] === id)) id = 'overview';
   if(previousRoute!==id){window.scrollTo(0,0);previousRoute=id;}
   document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.id === id));
-  document.body.classList.toggle('terminal-view', (id==='funding'||id==='basis'||id==='orderbook'||id==='liquidations'||id==='overview'||id==='oi'));
+  document.body.classList.toggle('terminal-view', (id==='charts'||id==='funding'||id==='basis'||id==='orderbook'||id==='liquidations'||id==='overview'||id==='oi'));
   document.body.classList.toggle('overview-view', id==='overview');
   const mod = modules.find(m => m[0] === id);
   document.querySelector('#title').textContent = id === 'overview' ? '看见价格背后的仓位' : mod[2];
@@ -52,6 +56,13 @@ function render() {
   document.querySelector('#methodology').textContent = isLegacy ?
     '演示数据沿用原项目 8 小时年化假设，实际周期未核验。' :
     '年化 = 周期费率 × 24 ÷ 周期小时数 × 365。仅作线性外推；周期未知不计算，过期或异常记录不参与有效排名。';
+  if (id === 'charts') {
+    document.querySelector('#notice-label').textContent = '◷ Binance 公开行情 · 每15秒轮询';
+    document.querySelector('#time').textContent = '图表时间：北京时间 UTC+8';
+    document.querySelector('#methodology').textContent = '成交价K线与成交量由 Binance USDⓈ-M 提供；MA20 在浏览器计算，最后一根可能未收盘。';
+    disposeMarketChart = window.renderMarketChart(content);
+    return;
+  }
   if (id === 'overview') {
     document.querySelector('#notice-label').textContent = '◷ 六指标同屏 · 云端小时快照';
     document.querySelector('#time').textContent = '各图按来源时间标注';

@@ -44,11 +44,12 @@ class CloudTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             for name in build_site.PUBLIC_FILES:
+                (root / name).parent.mkdir(parents=True, exist_ok=True)
                 (root / name).write_text('<script src="runtime-config.js"></script>' if name == "index.html" else "test", encoding="utf-8")
             (root / "private-notes.txt").write_text("do not publish")
             (root / "collect_funding.py").write_text("do not publish")
             dist = build_site.build_site(root, hosted=True)
-            self.assertEqual(set(p.name for p in dist.iterdir()), set(build_site.PUBLIC_FILES) | {"runtime-config.js", ".nojekyll"})
+            self.assertEqual(set(p.relative_to(dist).as_posix() for p in dist.rglob("*") if p.is_file()), set(build_site.PUBLIC_FILES) | {"runtime-config.js", ".nojekyll"})
             self.assertIn('"hosted": true', (dist / "runtime-config.js").read_text())
             self.assertFalse((dist / "private-notes.txt").exists())
             # A second build clears old generated assets, never arbitrary project files.
@@ -61,6 +62,7 @@ class CloudTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             for name in build_site.PUBLIC_FILES:
+                (root / name).parent.mkdir(parents=True, exist_ok=True)
                 (root / name).write_text('<script src="secret.js"></script>' if name == "index.html" else "test")
             with self.assertRaises(ValueError):
                 build_site.build_site(root)

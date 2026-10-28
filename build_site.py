@@ -10,6 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC_FILES = (
+    "market-chart.js", "vendor/lightweight-charts/lightweight-charts-5.2.1.mjs",
+    "vendor/lightweight-charts/NOTICE", "vendor/lightweight-charts/LICENSE",
     "binance-market.js", "binance-oi-minutes.json", "liquidation-market.js", "liquidation-minutes.json",
     "index.html", "kimra-logo.png", "styles.css", "app.js", "snapshot.js", "funding-data.js",
     "funding-matrix.js", "overview-wall.js", "analysis-export.js", "percentile-ui.js", "option-positions-data.js", "option-positions-ui.js", "book-simulator.js", "liquidations-data.js", "liquidations-ui.js", "liquidation-heatmap.js", "orderbook-data.js", "orderbook-ui.js", "liquidity-ui.js", "options-data.js", "options-ui.js", "summary-ui.js", "futures-data.js", "futures-ui.js", "basis-data.js", "basis-ui.js", "price-data.js", "oi-data.js", "oi-ui.js", "oi-minutes-data.js", "oi-minutes-ui.js", "data-model.js", "history-data.js", "history-chart.js", "history-ui.js", "LICENSE",
