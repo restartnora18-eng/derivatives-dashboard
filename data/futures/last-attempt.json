@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-29T07:09:06.927Z",
+  "attempted_at": "2026-10-29T14:23:43.948Z",
   "states": {
     "BTC": {
       "status": "ok",
@@ -32,7 +32,7 @@
             "expTime": "1793347200000",
             "floatPxLmtPct": "0.01",
             "freq": "",
-            "futureSettlement": true,
+            "futureSettlement": false,
             "groupId": "5",
             "initPxLmtPct": "0.05",
             "instCategory": "1",
@@ -370,38 +370,38 @@
           {
             "instId": "BTC-USD-270924",
             "instType": "FUTURES",
-            "markPx": "83822.3",
-            "ts": "1793257747200"
+            "markPx": "84360.6",
+            "ts": "1793283824217"
           },
           {
             "instId": "BTC-USD-270625",
             "instType": "FUTURES",
-            "markPx": "82712.5",
-            "ts": "1793257747200"
+            "markPx": "83213.1",
+            "ts": "1793283824217"
           },
           {
             "instId": "BTC-USD-270326",
             "instType": "FUTURES",
-            "markPx": "81606.4",
-            "ts": "1793257747200"
+            "markPx": "82125.9",
+            "ts": "1793283824217"
           },
           {
             "instId": "BTC-USD-261030",
             "instType": "FUTURES",
-            "markPx": "79884",
-            "ts": "1793257747200"
+            "markPx": "80347.5",
+            "ts": "1793283824217"
           },
           {
             "instId": "BTC-USD-261127",
             "instType": "FUTURES",
-            "markPx": "80209.7",
-            "ts": "1793257747200"
+            "markPx": "80709.5",
+            "ts": "1793283824217"
           },
           {
             "instId": "BTC-USD-261225",
             "instType": "FUTURES",
-            "markPx": "80543.5",
-            "ts": "1793257747200"
+            "markPx": "81047.8",
+            "ts": "1793283824217"
           }
         ],
         "msg": ""
@@ -411,13 +411,13 @@
         "data": [
           {
             "instId": "BTC-USD",
-            "idxPx": "79854.6",
+            "idxPx": "80344.6",
             "high24h": "81718.8",
             "low24h": "79607.9",
-            "open24h": "80816.9",
+            "open24h": "80381.9",
             "sodUtc0": "81267.8",
             "sodUtc8": "80434.6",
-            "ts": "1793257746068"
+            "ts": "1793283824098"
           }
         ],
         "msg": ""
@@ -440,7 +440,7 @@
             "expTime": "1793347200000",
             "floatPxLmtPct": "0.01",
             "freq": "",
-            "futureSettlement": true,
+            "futureSettlement": false,
             "groupId": "5",
             "initPxLmtPct": "0.05",
             "instCategory": "1",
@@ -778,38 +778,38 @@
           {
             "instId": "ETH-USD-270625",
             "instType": "FUTURES",
-            "markPx": "2379.5",
-            "ts": "1793257747721"
+            "markPx": "2397.82",
+            "ts": "1793283824706"
           },
           {
             "instId": "ETH-USD-270924",
             "instType": "FUTURES",
-            "markPx": "2407.23",
-            "ts": "1793257747721"
+            "markPx": "2425.65",
+            "ts": "1793283824706"
           },
           {
             "instId": "ETH-USD-270326",
             "instType": "FUTURES",
-            "markPx": "2349.81",
-            "ts": "1793257747721"
+            "markPx": "2366.86",
+            "ts": "1793283824706"
           },
           {
             "instId": "ETH-USD-261225",
             "instType": "FUTURES",
-            "markPx": "2324.81",
-            "ts": "1793257747721"
+            "markPx": "2341.51",
+            "ts": "1793283824706"
           },
           {
             "instId": "ETH-USD-261030",
             "instType": "FUTURES",
-            "markPx": "2309.83",
-            "ts": "1793257747721"
+            "markPx": "2326.69",
+            "ts": "1793283824706"
           },
           {
             "instId": "ETH-USD-261127",
             "instType": "FUTURES",
-            "markPx": "2316.72",
-            "ts": "1793257747721"
+            "markPx": "2333.86",
+            "ts": "1793283824706"
           }
         ],
         "msg": ""
@@ -819,13 +819,13 @@
         "data": [
           {
             "instId": "ETH-USD",
-            "idxPx": "2309.78",
+            "idxPx": "2327.17",
             "high24h": "2389.58",
             "low24h": "2290.67",
-            "open24h": "2351.4",
+            "open24h": "2323.61",
             "sodUtc0": "2357.07",
             "sodUtc8": "2331.68",
-            "ts": "1793257747090"
+            "ts": "1793283824232"
           }
         ],
         "msg": ""
