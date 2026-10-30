@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-30T14:12:37.397Z",
+  "attempted_at": "2026-10-30T19:26:01.577Z",
   "states": {
     "BTC": {
       "status": "ok",
@@ -370,38 +370,38 @@
           {
             "instId": "BTC-USD-271231",
             "instType": "FUTURES",
-            "markPx": "81681.6",
-            "ts": "1793369557713"
+            "markPx": "81518.6",
+            "ts": "1793388361807"
           },
           {
             "instId": "BTC-USD-270924",
             "instType": "FUTURES",
-            "markPx": "80515.9",
-            "ts": "1793369557713"
+            "markPx": "80332.8",
+            "ts": "1793388361807"
           },
           {
             "instId": "BTC-USD-270625",
             "instType": "FUTURES",
-            "markPx": "79452.3",
-            "ts": "1793369557713"
+            "markPx": "79259.6",
+            "ts": "1793388361807"
           },
           {
             "instId": "BTC-USD-270326",
             "instType": "FUTURES",
-            "markPx": "78413.3",
-            "ts": "1793369557713"
+            "markPx": "78194.1",
+            "ts": "1793388361807"
           },
           {
             "instId": "BTC-USD-261127",
             "instType": "FUTURES",
-            "markPx": "77046.6",
-            "ts": "1793369557713"
+            "markPx": "76830.7",
+            "ts": "1793388361807"
           },
           {
             "instId": "BTC-USD-261225",
             "instType": "FUTURES",
-            "markPx": "77360.5",
-            "ts": "1793369557713"
+            "markPx": "77171.7",
+            "ts": "1793388361807"
           }
         ],
         "msg": ""
@@ -411,13 +411,13 @@
         "data": [
           {
             "instId": "BTC-USD",
-            "idxPx": "76689.7",
-            "high24h": "81894.6",
-            "low24h": "76330.6",
-            "open24h": "80294.6",
+            "idxPx": "76496.7",
+            "high24h": "80853.5",
+            "low24h": "76166",
+            "open24h": "80747.8",
             "sodUtc0": "77800.4",
-            "sodUtc8": "81692",
-            "ts": "1793369557120"
+            "sodUtc8": "77474.6",
+            "ts": "1793388361498"
           }
         ],
         "msg": ""
@@ -778,38 +778,38 @@
           {
             "instId": "ETH-USD-270625",
             "instType": "FUTURES",
-            "markPx": "2283.29",
-            "ts": "1793369558350"
+            "markPx": "2295.58",
+            "ts": "1793388362218"
           },
           {
             "instId": "ETH-USD-270924",
             "instType": "FUTURES",
-            "markPx": "2310.63",
-            "ts": "1793369558350"
+            "markPx": "2322.17",
+            "ts": "1793388362218"
           },
           {
             "instId": "ETH-USD-271231",
             "instType": "FUTURES",
-            "markPx": "2341.7",
-            "ts": "1793369558350"
+            "markPx": "2354.73",
+            "ts": "1793388362218"
           },
           {
             "instId": "ETH-USD-270326",
             "instType": "FUTURES",
-            "markPx": "2252.76",
-            "ts": "1793369558350"
+            "markPx": "2265.9",
+            "ts": "1793388362218"
           },
           {
             "instId": "ETH-USD-261225",
             "instType": "FUTURES",
-            "markPx": "2228.29",
-            "ts": "1793369558350"
+            "markPx": "2242.34",
+            "ts": "1793388362218"
           },
           {
             "instId": "ETH-USD-261127",
             "instType": "FUTURES",
-            "markPx": "2220.97",
-            "ts": "1793369558350"
+            "markPx": "2234.72",
+            "ts": "1793388362218"
           }
         ],
         "msg": ""
@@ -819,13 +819,13 @@
         "data": [
           {
             "instId": "ETH-USD",
-            "idxPx": "2214.55",
-            "high24h": "2376.69",
+            "idxPx": "2229.45",
+            "high24h": "2336.56",
             "low24h": "2170.3",
-            "open24h": "2324.87",
+            "open24h": "2328.35",
             "sodUtc0": "2248.53",
-            "sodUtc8": "2366.4",
-            "ts": "1793369557454"
+            "sodUtc8": "2223.75",
+            "ts": "1793388362104"
           }
         ],
         "msg": ""
