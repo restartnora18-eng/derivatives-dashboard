@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-10-31T13:55:43.309Z",
+  "attempted_at": "2026-10-31T17:45:51.903Z",
   "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
   "experimental": true,
   "coverage": "bounded_rest_observations_only",
@@ -11,7 +11,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 25
+      "new_observed": 1
     },
     "ETH": {
       "status": "ok",
@@ -20,7 +20,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 14
+      "new_observed": 1
     }
   },
   "storage_truncated": false,
@@ -85056,6 +85056,30 @@
       "bankruptcy_price": 2253.38,
       "raw_sz": "17.03",
       "first_seen": "2026-10-31T13:55:43.309Z"
+    },
+    {
+      "id": "8b5a831612edb5db720314a0a1555edc291922cd43df7242a155ef44f535a54d",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-31T14:51:51.852Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2248.76,
+      "raw_sz": "20",
+      "first_seen": "2026-10-31T17:45:51.903Z"
+    },
+    {
+      "id": "4af7bd03ec25d7901efc748978455e8b8d912b9aadf476a200f2cb942bfa16ed",
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-10-31T15:23:33.511Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 77383.4,
+      "raw_sz": "0.22",
+      "first_seen": "2026-10-31T17:45:51.903Z"
     }
   ],
   "attempts": [
@@ -86388,6 +86412,24 @@
       "new_observed": 14,
       "new_longs": 0,
       "new_shorts": 14,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-10-31T17:45:51.903Z",
+      "new_observed": 1,
+      "new_longs": 0,
+      "new_shorts": 1,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-10-31T17:45:51.903Z",
+      "new_observed": 1,
+      "new_longs": 0,
+      "new_shorts": 1,
       "returned": 100,
       "limit_reached": true
     }
