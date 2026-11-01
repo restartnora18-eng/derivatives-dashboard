@@ -7,26 +7,10 @@
       "symbol": "BTC-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-31T17:45:47.254Z",
-      "requested_start": "2026-10-01T17:45:47.081Z",
-      "requested_end": "2026-10-31T17:45:47.081Z",
+      "collected_at": "2026-11-01T07:37:07.827Z",
+      "requested_start": "2026-10-02T07:37:07.622Z",
+      "requested_end": "2026-11-01T07:37:07.622Z",
       "points": [
-        {
-          "settled_at": "2026-10-02T00:00:00.000Z",
-          "rate_decimal": 3.2181372956e-06,
-          "rate_percent": 0.00032181372956,
-          "raw_rate": "0.0000032181372956",
-          "source_rate_field": "realizedRate",
-          "raw_record": {
-            "formulaType": "withRate",
-            "fundingRate": "0.0000032181372956",
-            "fundingTime": "1790899200000",
-            "instId": "BTC-USDT-SWAP",
-            "instType": "SWAP",
-            "method": "current_period",
-            "realizedRate": "0.0000032181372956"
-          }
-        },
         {
           "settled_at": "2026-10-02T08:00:00.000Z",
           "rate_decimal": 7.09670858217e-05,
@@ -1450,11 +1434,27 @@
             "method": "current_period",
             "realizedRate": "0.0001"
           }
+        },
+        {
+          "settled_at": "2026-11-01T00:00:00.000Z",
+          "rate_decimal": 0.0001,
+          "rate_percent": 0.01,
+          "raw_rate": "0.0001",
+          "source_rate_field": "realizedRate",
+          "raw_record": {
+            "formulaType": "withRate",
+            "fundingRate": "0.0001",
+            "fundingTime": "1793491200000",
+            "instId": "BTC-USDT-SWAP",
+            "instType": "SWAP",
+            "method": "current_period",
+            "realizedRate": "0.0001"
+          }
         }
       ],
       "coverage": {
-        "first": "2026-10-02T00:00:00.000Z",
-        "last": "2026-10-31T16:00:00.000Z",
+        "first": "2026-10-02T08:00:00.000Z",
+        "last": "2026-11-01T00:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -1469,6 +1469,15 @@
           "response": {
             "code": "0",
             "data": [
+              {
+                "formulaType": "withRate",
+                "fundingRate": "0.0001",
+                "fundingTime": "1793491200000",
+                "instId": "BTC-USDT-SWAP",
+                "instType": "SWAP",
+                "method": "current_period",
+                "realizedRate": "0.0001"
+              },
               {
                 "formulaType": "withRate",
                 "fundingRate": "0.0001",
@@ -2359,15 +2368,6 @@
                 "instType": "SWAP",
                 "method": "current_period",
                 "realizedRate": "0.0000543754330817"
-              },
-              {
-                "formulaType": "withRate",
-                "fundingRate": "0.0000709507874477",
-                "fundingTime": "1790611200000",
-                "instId": "BTC-USDT-SWAP",
-                "instType": "SWAP",
-                "method": "current_period",
-                "realizedRate": "0.0000709507874477"
               }
             ],
             "msg": ""
@@ -2381,26 +2381,10 @@
       "symbol": "ETH-USDT-SWAP",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-31T17:45:47.386Z",
-      "requested_start": "2026-10-01T17:45:47.081Z",
-      "requested_end": "2026-10-31T17:45:47.081Z",
+      "collected_at": "2026-11-01T07:37:07.976Z",
+      "requested_start": "2026-10-02T07:37:07.622Z",
+      "requested_end": "2026-11-01T07:37:07.622Z",
       "points": [
-        {
-          "settled_at": "2026-10-02T00:00:00.000Z",
-          "rate_decimal": 1.48696644614e-05,
-          "rate_percent": 0.0014869664461399999,
-          "raw_rate": "0.0000148696644614",
-          "source_rate_field": "realizedRate",
-          "raw_record": {
-            "formulaType": "withRate",
-            "fundingRate": "0.0000148696644614",
-            "fundingTime": "1790899200000",
-            "instId": "ETH-USDT-SWAP",
-            "instType": "SWAP",
-            "method": "current_period",
-            "realizedRate": "0.0000148696644614"
-          }
-        },
         {
           "settled_at": "2026-10-02T08:00:00.000Z",
           "rate_decimal": 7.53291922106e-05,
@@ -3824,11 +3808,27 @@
             "method": "current_period",
             "realizedRate": "-0.000048594431422"
           }
+        },
+        {
+          "settled_at": "2026-11-01T00:00:00.000Z",
+          "rate_decimal": 2.6673318192e-06,
+          "rate_percent": 0.00026673318192,
+          "raw_rate": "0.0000026673318192",
+          "source_rate_field": "realizedRate",
+          "raw_record": {
+            "formulaType": "withRate",
+            "fundingRate": "0.0000026673318192",
+            "fundingTime": "1793491200000",
+            "instId": "ETH-USDT-SWAP",
+            "instType": "SWAP",
+            "method": "current_period",
+            "realizedRate": "0.0000026673318192"
+          }
         }
       ],
       "coverage": {
-        "first": "2026-10-02T00:00:00.000Z",
-        "last": "2026-10-31T16:00:00.000Z",
+        "first": "2026-10-02T08:00:00.000Z",
+        "last": "2026-11-01T00:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -3843,6 +3843,15 @@
           "response": {
             "code": "0",
             "data": [
+              {
+                "formulaType": "withRate",
+                "fundingRate": "0.0000026673318192",
+                "fundingTime": "1793491200000",
+                "instId": "ETH-USDT-SWAP",
+                "instType": "SWAP",
+                "method": "current_period",
+                "realizedRate": "0.0000026673318192"
+              },
               {
                 "formulaType": "withRate",
                 "fundingRate": "-0.000048594431422",
@@ -4733,15 +4742,6 @@
                 "instType": "SWAP",
                 "method": "current_period",
                 "realizedRate": "0.0000619488827078"
-              },
-              {
-                "formulaType": "withRate",
-                "fundingRate": "0.0000293116680404",
-                "fundingTime": "1790611200000",
-                "instId": "ETH-USDT-SWAP",
-                "instType": "SWAP",
-                "method": "current_period",
-                "realizedRate": "0.0000293116680404"
               }
             ],
             "msg": ""
@@ -4755,22 +4755,10 @@
       "symbol": "BTCUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-31T17:45:47.528Z",
-      "requested_start": "2026-10-01T17:45:47.081Z",
-      "requested_end": "2026-10-31T17:45:47.081Z",
+      "collected_at": "2026-11-01T07:37:08.143Z",
+      "requested_start": "2026-10-02T07:37:07.622Z",
+      "requested_end": "2026-11-01T07:37:07.622Z",
       "points": [
-        {
-          "settled_at": "2026-10-02T00:00:00.000Z",
-          "rate_decimal": -9e-06,
-          "rate_percent": -0.0009,
-          "raw_rate": "-0.000009",
-          "source_rate_field": "fundingRate",
-          "raw_record": {
-            "symbol": "BTCUSDT",
-            "fundingRate": "-0.000009",
-            "fundingRateTimestamp": "1790899200000"
-          }
-        },
         {
           "settled_at": "2026-10-02T08:00:00.000Z",
           "rate_decimal": 4e-05,
@@ -5838,11 +5826,23 @@
             "fundingRate": "0.000033",
             "fundingRateTimestamp": "1793462400000"
           }
+        },
+        {
+          "settled_at": "2026-11-01T00:00:00.000Z",
+          "rate_decimal": 8.5e-05,
+          "rate_percent": 0.0085,
+          "raw_rate": "0.000085",
+          "source_rate_field": "fundingRate",
+          "raw_record": {
+            "symbol": "BTCUSDT",
+            "fundingRate": "0.000085",
+            "fundingRateTimestamp": "1793491200000"
+          }
         }
       ],
       "coverage": {
-        "first": "2026-10-02T00:00:00.000Z",
-        "last": "2026-10-31T16:00:00.000Z",
+        "first": "2026-10-02T08:00:00.000Z",
+        "last": "2026-11-01T00:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -5859,9 +5859,14 @@
           "response": {
             "code": "00000",
             "msg": "success",
-            "requestTime": 1793468747470,
+            "requestTime": 1793518628071,
             "data": {
               "resultList": [
+                {
+                  "symbol": "BTCUSDT",
+                  "fundingRate": "0.000085",
+                  "fundingRateTimestamp": "1793491200000"
+                },
                 {
                   "symbol": "BTCUSDT",
                   "fundingRate": "0.000033",
@@ -6356,11 +6361,6 @@
                   "symbol": "BTCUSDT",
                   "fundingRate": "0.0001",
                   "fundingRateTimestamp": "1790640000000"
-                },
-                {
-                  "symbol": "BTCUSDT",
-                  "fundingRate": "0.0001",
-                  "fundingRateTimestamp": "1790611200000"
                 }
               ]
             }
@@ -6374,22 +6374,10 @@
       "symbol": "ETHUSDT",
       "rate_kind": "settled",
       "rate_unit": "percent_per_settlement",
-      "collected_at": "2026-10-31T17:45:47.698Z",
-      "requested_start": "2026-10-01T17:45:47.081Z",
-      "requested_end": "2026-10-31T17:45:47.081Z",
+      "collected_at": "2026-11-01T07:37:08.303Z",
+      "requested_start": "2026-10-02T07:37:07.622Z",
+      "requested_end": "2026-11-01T07:37:07.622Z",
       "points": [
-        {
-          "settled_at": "2026-10-02T00:00:00.000Z",
-          "rate_decimal": 6e-06,
-          "rate_percent": 0.0006000000000000001,
-          "raw_rate": "0.000006",
-          "source_rate_field": "fundingRate",
-          "raw_record": {
-            "symbol": "ETHUSDT",
-            "fundingRate": "0.000006",
-            "fundingRateTimestamp": "1790899200000"
-          }
-        },
         {
           "settled_at": "2026-10-02T08:00:00.000Z",
           "rate_decimal": 0.0001,
@@ -7457,11 +7445,23 @@
             "fundingRate": "-0.000045",
             "fundingRateTimestamp": "1793462400000"
           }
+        },
+        {
+          "settled_at": "2026-11-01T00:00:00.000Z",
+          "rate_decimal": 9e-06,
+          "rate_percent": 0.0009,
+          "raw_rate": "0.000009",
+          "source_rate_field": "fundingRate",
+          "raw_record": {
+            "symbol": "ETHUSDT",
+            "fundingRate": "0.000009",
+            "fundingRateTimestamp": "1793491200000"
+          }
         }
       ],
       "coverage": {
-        "first": "2026-10-02T00:00:00.000Z",
-        "last": "2026-10-31T16:00:00.000Z",
+        "first": "2026-10-02T08:00:00.000Z",
+        "last": "2026-11-01T00:00:00.000Z",
         "reached_requested_start": true,
         "source_exhausted": false
       },
@@ -7478,9 +7478,14 @@
           "response": {
             "code": "00000",
             "msg": "success",
-            "requestTime": 1793468747637,
+            "requestTime": 1793518628234,
             "data": {
               "resultList": [
+                {
+                  "symbol": "ETHUSDT",
+                  "fundingRate": "0.000009",
+                  "fundingRateTimestamp": "1793491200000"
+                },
                 {
                   "symbol": "ETHUSDT",
                   "fundingRate": "-0.000045",
@@ -7975,11 +7980,6 @@
                   "symbol": "ETHUSDT",
                   "fundingRate": "0.0001",
                   "fundingRateTimestamp": "1790640000000"
-                },
-                {
-                  "symbol": "ETHUSDT",
-                  "fundingRate": "0.0001",
-                  "fundingRateTimestamp": "1790611200000"
                 }
               ]
             }
