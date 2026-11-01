@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-11-01T00:28:39.479Z",
+  "attempted_at": "2026-11-01T01:13:15.334Z",
   "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
   "experimental": true,
   "coverage": "bounded_rest_observations_only",
@@ -7,11 +7,11 @@
     "BTC": {
       "status": "ok",
       "experimental": true,
-      "returned": 100,
-      "accepted": 100,
+      "returned": 83,
+      "accepted": 83,
       "rejected": 0,
-      "limit_reached": true,
-      "new_observed": 4
+      "limit_reached": false,
+      "new_observed": 0
     },
     "ETH": {
       "status": "ok",
@@ -20,7 +20,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 54
+      "new_observed": 1
     }
   },
   "storage_truncated": false,
@@ -86508,6 +86508,18 @@
       "bankruptcy_price": 2252.78,
       "raw_sz": "5.76",
       "first_seen": "2026-11-01T00:28:39.479Z"
+    },
+    {
+      "id": "e9adbdfc0a6014930bb00bf3d9c84fb0af4b770b260825cd56e79baabcd9af0c",
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-11-01T01:09:26.880Z",
+      "pos_side": "short",
+      "order_side": "buy",
+      "bankruptcy_price": 2263.8,
+      "raw_sz": "0.01",
+      "first_seen": "2026-11-01T01:13:15.334Z"
     }
   ],
   "attempts": [
@@ -87930,6 +87942,24 @@
       "new_observed": 54,
       "new_longs": 1,
       "new_shorts": 53,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-11-01T01:13:15.334Z",
+      "new_observed": 0,
+      "new_longs": 0,
+      "new_shorts": 0,
+      "returned": 83,
+      "limit_reached": false
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-11-01T01:13:15.334Z",
+      "new_observed": 1,
+      "new_longs": 0,
+      "new_shorts": 1,
       "returned": 100,
       "limit_reached": true
     }
