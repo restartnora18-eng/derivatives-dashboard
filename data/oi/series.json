@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-11-02T06:09:54.571Z",
+  "attempted_at": "2026-11-02T15:59:13.950Z",
   "endpoint": "https://www.okx.com/api/v5/public/open-interest",
   "states": {
     "BTC": {
@@ -1409,6 +1409,26 @@
       "venue": "okx",
       "time": "2026-11-02T06:09:54.868Z",
       "fetched_at": "2026-11-02T06:09:54.571Z"
+    },
+    {
+      "contracts": 3332026.0100000203,
+      "coin": 33320.2601000002,
+      "usd": 2579504595.7715654,
+      "symbol": "BTC",
+      "contract": "BTC-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-11-02T15:59:14.062Z",
+      "fetched_at": "2026-11-02T15:59:13.950Z"
+    },
+    {
+      "contracts": 6516278.06000002,
+      "coin": 651627.8060000021,
+      "usd": 1479292863.7909048,
+      "symbol": "ETH",
+      "contract": "ETH-USDT-SWAP",
+      "venue": "okx",
+      "time": "2026-11-02T15:59:14.267Z",
+      "fetched_at": "2026-11-02T15:59:13.950Z"
     }
   ]
 }
