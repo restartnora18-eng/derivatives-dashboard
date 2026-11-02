@@ -1,16 +1,16 @@
 {
-  "attempted_at": "2026-11-01T23:38:01.973Z",
+  "attempted_at": "2026-11-02T06:09:58.520Z",
   "states": {
     "BTC": {
       "status": "ok",
-      "matched_contracts": 714,
-      "returned_rows": 1730,
+      "matched_contracts": 720,
+      "returned_rows": 1736,
       "ignored_rows": 1016
     },
     "ETH": {
       "status": "ok",
-      "matched_contracts": 688,
-      "returned_rows": 1694,
+      "matched_contracts": 698,
+      "returned_rows": 1704,
       "ignored_rows": 1006
     }
   },
@@ -19,235 +19,235 @@
       "symbol": "BTC",
       "family": "BTC-USD",
       "venue": "okx",
-      "time": "2026-11-01T23:38:02.273Z",
-      "source_start": "2026-11-01T23:38:02.273Z",
-      "fetched_at": "2026-11-01T23:38:01.973Z",
-      "matched_contracts": 714,
+      "time": "2026-11-02T06:09:58.885Z",
+      "source_start": "2026-11-02T06:09:58.885Z",
+      "fetched_at": "2026-11-02T06:09:58.520Z",
+      "matched_contracts": 720,
       "ignored_rows": 1016,
-      "returned_rows": 1730,
+      "returned_rows": 1736,
       "coin_per_contract_values": [
         0.01
       ],
       "expiries": [
         {
           "expiry": "2026-11-02T08:00:00.000Z",
-          "call_coin": 2084.3000000000006,
-          "put_coin": 1381.32,
-          "call_contracts": 35,
-          "put_contracts": 35,
-          "pcr": 0.6627260950918772
+          "call_coin": 2066.2300000000005,
+          "put_coin": 1539.64,
+          "call_contracts": 36,
+          "put_contracts": 36,
+          "pcr": 0.7451445386041243
         },
         {
           "expiry": "2026-11-03T08:00:00.000Z",
-          "call_coin": 435.63000000000005,
-          "put_coin": 478.6699999999999,
+          "call_coin": 474.22,
+          "put_coin": 671.47,
           "call_contracts": 24,
           "put_contracts": 24,
-          "pcr": 1.0987994398916507
+          "pcr": 1.4159461853148327
         },
         {
           "expiry": "2026-11-04T08:00:00.000Z",
-          "call_coin": 248.07000000000002,
-          "put_coin": 571.4699999999999,
-          "call_contracts": 22,
-          "put_contracts": 22,
-          "pcr": 2.3036642883057197
+          "call_coin": 303.36,
+          "put_coin": 612.68,
+          "call_contracts": 23,
+          "put_contracts": 23,
+          "pcr": 2.0196466244725735
         },
         {
           "expiry": "2026-11-05T08:00:00.000Z",
-          "call_coin": 56.660000000000004,
-          "put_coin": 51.96,
-          "call_contracts": 17,
-          "put_contracts": 17,
-          "pcr": 0.9170490645958348
+          "call_coin": 62.68,
+          "put_coin": 62.61,
+          "call_contracts": 18,
+          "put_contracts": 18,
+          "pcr": 0.9988832163369495
         },
         {
           "expiry": "2026-11-06T08:00:00.000Z",
-          "call_coin": 1780.7200000000003,
-          "put_coin": 2272.99,
+          "call_coin": 1787.29,
+          "put_coin": 2276.84,
           "call_contracts": 31,
           "put_contracts": 31,
-          "pcr": 1.2764443595848867
+          "pcr": 1.2739063050764008
         },
         {
           "expiry": "2026-11-13T08:00:00.000Z",
-          "call_coin": 748.78,
-          "put_coin": 836.3800000000001,
+          "call_coin": 753.9599999999999,
+          "put_coin": 836.8900000000001,
           "call_contracts": 27,
           "put_contracts": 27,
-          "pcr": 1.1169903042282114
+          "pcr": 1.1099925725502682
         },
         {
           "expiry": "2026-11-20T08:00:00.000Z",
-          "call_coin": 511.8400000000001,
-          "put_coin": 554.2500000000001,
+          "call_coin": 528.95,
+          "put_coin": 558.4900000000002,
           "call_contracts": 26,
           "put_contracts": 26,
-          "pcr": 1.0828579243513599
+          "pcr": 1.055846488325929
         },
         {
           "expiry": "2026-11-27T08:00:00.000Z",
-          "call_coin": 1521.38,
-          "put_coin": 2479.2300000000005,
+          "call_coin": 1532.52,
+          "put_coin": 2484.4100000000008,
           "call_contracts": 35,
           "put_contracts": 35,
-          "pcr": 1.629592869631519
+          "pcr": 1.6211272936079142
         },
         {
           "expiry": "2026-12-25T08:00:00.000Z",
-          "call_coin": 4681.58,
-          "put_coin": 4010.569999999999,
+          "call_coin": 4681.4,
+          "put_coin": 4006.7899999999986,
           "call_contracts": 43,
           "put_contracts": 43,
-          "pcr": 0.8566701839977099
+          "pcr": 0.8558956722348013
         },
         {
           "expiry": "2027-01-29T08:00:00.000Z",
-          "call_coin": 178.15999999999997,
-          "put_coin": 408.27000000000004,
+          "call_coin": 179.17,
+          "put_coin": 408.49000000000007,
           "call_contracts": 24,
           "put_contracts": 24,
-          "pcr": 2.2915918275707234
+          "pcr": 2.2799017692694097
         },
         {
           "expiry": "2027-03-26T08:00:00.000Z",
-          "call_coin": 1681.72,
-          "put_coin": 3865.2000000000003,
+          "call_coin": 1682.6,
+          "put_coin": 3861.2700000000004,
           "call_contracts": 26,
           "put_contracts": 26,
-          "pcr": 2.2983612016269057
+          "pcr": 2.294823487459884
         },
         {
           "expiry": "2027-06-25T08:00:00.000Z",
-          "call_coin": 710.1800000000001,
-          "put_coin": 444.56999999999994,
+          "call_coin": 705.1800000000001,
+          "put_coin": 441.81999999999994,
           "call_contracts": 24,
           "put_contracts": 24,
-          "pcr": 0.625996226308823
+          "pcr": 0.6265350690603816
         },
         {
           "expiry": "2027-09-24T08:00:00.000Z",
-          "call_coin": 351.93,
+          "call_coin": 352.43,
           "put_coin": 79.36000000000001,
           "call_contracts": 23,
           "put_contracts": 23,
-          "pcr": 0.22549938908305633
+          "pcr": 0.22517946826320123
         }
       ],
-      "source_digest": "5e77704b5b77c444ef9b80f96c9a1f4ea85e1e061485c363d153fdf93608e78c",
-      "call_coin": 14990.95,
-      "put_coin": 17434.239999999998,
-      "pcr": 1.1629843338814416
+      "source_digest": "10ebd1f02fadd56cd3c797deba35022b9af9b9706f114b3cfeb7814978a35ea0",
+      "call_coin": 15109.99,
+      "put_coin": 17840.760000000002,
+      "pcr": 1.1807261288723554
     },
     "ETH": {
       "symbol": "ETH",
       "family": "ETH-USD",
       "venue": "okx",
-      "time": "2026-11-01T23:38:02.656Z",
-      "source_start": "2026-11-01T23:38:02.656Z",
-      "fetched_at": "2026-11-01T23:38:01.973Z",
-      "matched_contracts": 688,
+      "time": "2026-11-02T06:09:59.341Z",
+      "source_start": "2026-11-02T06:09:59.341Z",
+      "fetched_at": "2026-11-02T06:09:58.520Z",
+      "matched_contracts": 698,
       "ignored_rows": 1006,
-      "returned_rows": 1694,
+      "returned_rows": 1704,
       "coin_per_contract_values": [
         0.1
       ],
       "expiries": [
         {
           "expiry": "2026-11-02T08:00:00.000Z",
-          "call_coin": 35706.7,
-          "put_coin": 14457.600000000002,
+          "call_coin": 37161.5,
+          "put_coin": 17193.4,
           "call_contracts": 36,
           "put_contracts": 36,
-          "pcr": 0.4048988005052274
+          "pcr": 0.46266700752122497
         },
         {
           "expiry": "2026-11-03T08:00:00.000Z",
-          "call_coin": 5150.799999999999,
-          "put_coin": 4054.3000000000006,
+          "call_coin": 5808.3,
+          "put_coin": 5573.400000000001,
           "call_contracts": 21,
           "put_contracts": 21,
-          "pcr": 0.7871204473091561
+          "pcr": 0.9595578740767523
         },
         {
           "expiry": "2026-11-04T08:00:00.000Z",
-          "call_coin": 2764.1,
-          "put_coin": 2534.6,
+          "call_coin": 3254.7000000000003,
+          "put_coin": 3067.3999999999996,
           "call_contracts": 19,
           "put_contracts": 19,
-          "pcr": 0.9169711660214898
+          "pcr": 0.9424524533751188
         },
         {
           "expiry": "2026-11-05T08:00:00.000Z",
-          "call_coin": 438.7,
-          "put_coin": 332.79999999999995,
+          "call_coin": 679.5,
+          "put_coin": 625.6999999999999,
           "call_contracts": 19,
           "put_contracts": 19,
-          "pcr": 0.7586049692272623
+          "pcr": 0.9208241353936717
         },
         {
           "expiry": "2026-11-06T08:00:00.000Z",
-          "call_coin": 19035.2,
-          "put_coin": 16736.499999999996,
-          "call_contracts": 25,
-          "put_contracts": 25,
-          "pcr": 0.8792395141632342
+          "call_coin": 19043.100000000002,
+          "put_coin": 17000.899999999994,
+          "call_contracts": 30,
+          "put_contracts": 30,
+          "pcr": 0.8927590570862933
         },
         {
           "expiry": "2026-11-13T08:00:00.000Z",
-          "call_coin": 9568.300000000001,
-          "put_coin": 9800.099999999999,
+          "call_coin": 9976.900000000001,
+          "put_coin": 9767.399999999998,
           "call_contracts": 26,
           "put_contracts": 26,
-          "pcr": 1.024225829039641
+          "pcr": 0.9790014934498689
         },
         {
           "expiry": "2026-11-20T08:00:00.000Z",
-          "call_coin": 6774.999999999999,
-          "put_coin": 5263.400000000001,
+          "call_coin": 6792.799999999999,
+          "put_coin": 5501.9,
           "call_contracts": 22,
           "put_contracts": 22,
-          "pcr": 0.7768856088560887
+          "pcr": 0.8099605464609587
         },
         {
           "expiry": "2026-11-27T08:00:00.000Z",
-          "call_coin": 23815.6,
-          "put_coin": 33985.1,
+          "call_coin": 24187.199999999993,
+          "put_coin": 33951.200000000004,
           "call_contracts": 38,
           "put_contracts": 38,
-          "pcr": 1.427010027041099
+          "pcr": 1.4036845935040028
         },
         {
           "expiry": "2026-12-25T08:00:00.000Z",
-          "call_coin": 45076.399999999994,
-          "put_coin": 37787.2,
+          "call_coin": 45228.999999999985,
+          "put_coin": 37872.09999999999,
           "call_contracts": 34,
           "put_contracts": 34,
-          "pcr": 0.8382923214808636
+          "pcr": 0.8373410864710695
         },
         {
           "expiry": "2027-01-29T08:00:00.000Z",
-          "call_coin": 3137.1000000000004,
-          "put_coin": 4526.0,
+          "call_coin": 3227.4,
+          "put_coin": 4992.0,
           "call_contracts": 22,
           "put_contracts": 22,
-          "pcr": 1.4427337349781644
+          "pcr": 1.5467559025841233
         },
         {
           "expiry": "2027-03-26T08:00:00.000Z",
-          "call_coin": 20416.199999999997,
-          "put_coin": 33133.59999999999,
+          "call_coin": 20416.5,
+          "put_coin": 33153.59999999999,
           "call_contracts": 27,
           "put_contracts": 27,
-          "pcr": 1.622907299105612
+          "pcr": 1.6238630519432808
         },
         {
           "expiry": "2027-06-25T08:00:00.000Z",
-          "call_coin": 8292.699999999999,
+          "call_coin": 8262.3,
           "put_coin": 9223.1,
           "call_contracts": 31,
           "put_contracts": 31,
-          "pcr": 1.1121950631278115
+          "pcr": 1.116287232368711
         },
         {
           "expiry": "2027-09-24T08:00:00.000Z",
@@ -258,10 +258,10 @@
           "pcr": 0.904869827986983
         }
       ],
-      "source_digest": "4eeece155bbf81a4126efd499bb1034b715660715c1bc6369f17ce16e2f61b65",
-      "call_coin": 181897.59999999998,
-      "put_coin": 173391.4,
-      "pcr": 0.9532363263726406
+      "source_digest": "bb58072465094087dbd74b1b3b890b501c0ebd21bb87604e863662c12157c510",
+      "call_coin": 185759.99999999997,
+      "put_coin": 179479.19999999998,
+      "pcr": 0.9661886304909562
     }
   },
   "records": [
@@ -1290,6 +1290,24 @@
       "put_coin": 173391.4,
       "pcr": 0.9532363263726406,
       "matched_contracts": 688
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-11-02T06:09:58.885Z",
+      "fetched_at": "2026-11-02T06:09:58.520Z",
+      "call_coin": 15109.99,
+      "put_coin": 17840.760000000002,
+      "pcr": 1.1807261288723554,
+      "matched_contracts": 720
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-11-02T06:09:59.341Z",
+      "fetched_at": "2026-11-02T06:09:58.520Z",
+      "call_coin": 185759.99999999997,
+      "put_coin": 179479.19999999998,
+      "pcr": 0.9661886304909562,
+      "matched_contracts": 698
     }
   ]
 }
