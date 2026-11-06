@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-11-06T10:41:43.721Z",
+  "attempted_at": "2026-11-06T10:56:44.510Z",
   "endpoint": "https://www.okx.com/api/v5/public/liquidation-orders",
   "experimental": true,
   "coverage": "bounded_rest_observations_only",
@@ -11,7 +11,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 100
+      "new_observed": 0
     },
     "ETH": {
       "status": "ok",
@@ -20,7 +20,7 @@
       "accepted": 100,
       "rejected": 0,
       "limit_reached": true,
-      "new_observed": 100
+      "new_observed": 0
     }
   },
   "storage_truncated": true,
@@ -122166,6 +122166,24 @@
       "new_observed": 100,
       "new_longs": 1,
       "new_shorts": 99,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "BTC",
+      "time": "2026-11-06T10:56:44.510Z",
+      "new_observed": 0,
+      "new_longs": 0,
+      "new_shorts": 0,
+      "returned": 100,
+      "limit_reached": true
+    },
+    {
+      "symbol": "ETH",
+      "time": "2026-11-06T10:56:44.510Z",
+      "new_observed": 0,
+      "new_longs": 0,
+      "new_shorts": 0,
       "returned": 100,
       "limit_reached": true
     }
