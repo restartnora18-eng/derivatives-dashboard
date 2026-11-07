@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-11-07T02:50:13.498Z",
+  "attempted_at": "2026-11-07T10:15:04.594Z",
   "states": {
     "BTC": {
       "status": "ok",
@@ -370,38 +370,38 @@
           {
             "instId": "BTC-USD-271231",
             "instType": "FUTURES",
-            "markPx": "80973",
-            "ts": "1794019813797"
+            "markPx": "80998.7",
+            "ts": "1794046504850"
           },
           {
             "instId": "BTC-USD-270924",
             "instType": "FUTURES",
-            "markPx": "79720.6",
-            "ts": "1794019813797"
+            "markPx": "79701.5",
+            "ts": "1794046504850"
           },
           {
             "instId": "BTC-USD-270625",
             "instType": "FUTURES",
-            "markPx": "78677.2",
-            "ts": "1794019813797"
+            "markPx": "78660.5",
+            "ts": "1794046504850"
           },
           {
             "instId": "BTC-USD-270326",
             "instType": "FUTURES",
-            "markPx": "77609.7",
-            "ts": "1794019813797"
+            "markPx": "77615",
+            "ts": "1794046504850"
           },
           {
             "instId": "BTC-USD-261127",
             "instType": "FUTURES",
-            "markPx": "76220.2",
-            "ts": "1794019813797"
+            "markPx": "76194.8",
+            "ts": "1794046504850"
           },
           {
             "instId": "BTC-USD-261225",
             "instType": "FUTURES",
-            "markPx": "76548.2",
-            "ts": "1794019813797"
+            "markPx": "76529.4",
+            "ts": "1794046504850"
           }
         ],
         "msg": ""
@@ -411,13 +411,13 @@
         "data": [
           {
             "instId": "BTC-USD",
-            "idxPx": "75965.5",
+            "idxPx": "75950.4",
             "high24h": "76265.4",
             "low24h": "74778.4",
-            "open24h": "76166.9",
+            "open24h": "76064.8",
             "sodUtc0": "75744.5",
             "sodUtc8": "75761",
-            "ts": "1794019813100"
+            "ts": "1794046504657"
           }
         ],
         "msg": ""
@@ -778,38 +778,38 @@
           {
             "instId": "ETH-USD-270625",
             "instType": "FUTURES",
-            "markPx": "2312.67",
-            "ts": "1794019814375"
+            "markPx": "2313.11",
+            "ts": "1794046505339"
           },
           {
             "instId": "ETH-USD-270924",
             "instType": "FUTURES",
-            "markPx": "2340.74",
-            "ts": "1794019814375"
+            "markPx": "2341.42",
+            "ts": "1794046505339"
           },
           {
             "instId": "ETH-USD-271231",
             "instType": "FUTURES",
-            "markPx": "2371.87",
-            "ts": "1794019814375"
+            "markPx": "2372.03",
+            "ts": "1794046505339"
           },
           {
             "instId": "ETH-USD-270326",
             "instType": "FUTURES",
-            "markPx": "2283.93",
-            "ts": "1794019814375"
+            "markPx": "2284.01",
+            "ts": "1794046505339"
           },
           {
             "instId": "ETH-USD-261225",
             "instType": "FUTURES",
-            "markPx": "2259.45",
-            "ts": "1794019814375"
+            "markPx": "2259.11",
+            "ts": "1794046505339"
           },
           {
             "instId": "ETH-USD-261127",
             "instType": "FUTURES",
-            "markPx": "2251.76",
-            "ts": "1794019814375"
+            "markPx": "2251.41",
+            "ts": "1794046505339"
           }
         ],
         "msg": ""
@@ -819,13 +819,13 @@
         "data": [
           {
             "instId": "ETH-USD",
-            "idxPx": "2245.89",
+            "idxPx": "2245.39",
             "high24h": "2250.16",
             "low24h": "2206.18",
-            "open24h": "2242.09",
+            "open24h": "2235.36",
             "sodUtc0": "2235.47",
             "sodUtc8": "2227.78",
-            "ts": "1794019813095"
+            "ts": "1794046505044"
           }
         ],
         "msg": ""

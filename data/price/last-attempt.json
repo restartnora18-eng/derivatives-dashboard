@@ -1,5 +1,5 @@
 {
-  "attempted_at": "2026-11-07T02:50:12.729Z",
+  "attempted_at": "2026-11-07T10:15:03.920Z",
   "states": {
     "BTC": {
       "status": "ok"
@@ -15,8 +15,8 @@
         {
           "instId": "BTC-USDT-SWAP",
           "instType": "SWAP",
-          "markPx": "76022.8",
-          "ts": "1794019812839"
+          "markPx": "76003.5",
+          "ts": "1794046504012"
         }
       ],
       "msg": ""
@@ -27,8 +27,8 @@
         {
           "instId": "ETH-USDT-SWAP",
           "instType": "SWAP",
-          "markPx": "2247.67",
-          "ts": "1794019813023"
+          "markPx": "2247.17",
+          "ts": "1794046504183"
         }
       ],
       "msg": ""
