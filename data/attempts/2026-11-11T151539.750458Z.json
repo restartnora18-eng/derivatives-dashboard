@@ -1,0 +1,250 @@
+{
+  "schema_version": 2,
+  "run_started_at": "2026-11-11T15:15:38.445Z",
+  "captured_at": "2026-11-11T15:15:39.750Z",
+  "max_source_age_seconds": 5400,
+  "scope": {
+    "bases": [
+      "BTC",
+      "ETH"
+    ],
+    "quote": "USDT",
+    "contract_type": "linear_perpetual"
+  },
+  "rate_unit": "decimal_per_period",
+  "annualized_unit": "percent_per_year_simple",
+  "venues": {
+    "binance": {
+      "status": "failed",
+      "expected": 2,
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_451",
+          "message": "公共接口返回 HTTP 451"
+        },
+        {
+          "base": "ETH",
+          "code": "http_451",
+          "message": "同一交易所访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "bybit": {
+      "status": "failed",
+      "expected": 2,
+      "received": 0,
+      "errors": [
+        {
+          "base": "BTC",
+          "code": "http_403",
+          "message": "公共接口返回 HTTP 403"
+        },
+        {
+          "base": "ETH",
+          "code": "http_403",
+          "message": "同一交易所访问受限，跳过重复请求"
+        }
+      ]
+    },
+    "okx": {
+      "status": "ok",
+      "expected": 2,
+      "received": 2,
+      "errors": []
+    },
+    "bitget": {
+      "status": "ok",
+      "expected": 2,
+      "received": 2,
+      "errors": []
+    }
+  },
+  "records": [
+    {
+      "venue": "okx",
+      "base": "BTC",
+      "symbol": "BTC-USDT-SWAP",
+      "quote": "USDT",
+      "settle": "USDT",
+      "contract_type": "linear_perpetual",
+      "raw_rate": "0.0000396387768335",
+      "rate_decimal": 3.96387768335e-05,
+      "rate_percent": 0.00396387768335,
+      "interval_hours": 8.0,
+      "interval_source": "nextFundingTime_minus_fundingTime",
+      "annualized_percent": 4.34044606326825,
+      "rate_kind": "estimated_upcoming",
+      "source_rate_field": "fundingRate",
+      "source_time": "2026-11-11T15:15:10.813Z",
+      "fetched_at": "2026-11-11T15:15:39.005Z",
+      "funding_time": "2026-11-11T16:00:00.000Z",
+      "funding_time_label": "settlement",
+      "warnings": [],
+      "source_endpoint": "https://www.okx.com/api/v5/public/funding-rate",
+      "raw_response": {
+        "code": "0",
+        "data": [
+          {
+            "formulaType": "withRate",
+            "fundingRate": "0.0000396387768335",
+            "fundingTime": "1794412800000",
+            "impactValue": "20000.0000000000000000",
+            "instId": "BTC-USDT-SWAP",
+            "instType": "SWAP",
+            "interestRate": "0.0001000000000000",
+            "maxFundingRate": "0.00375",
+            "method": "current_period",
+            "minFundingRate": "-0.00375",
+            "nextFundingRate": "",
+            "nextFundingTime": "1794441600000",
+            "premium": "-0.0005378023440575",
+            "prevFundingTime": "1794384000000",
+            "settFundingRate": "0.0000937768718932",
+            "settState": "settled",
+            "ts": "1794410110813"
+          }
+        ],
+        "msg": ""
+      },
+      "raw_interval_metadata": null
+    },
+    {
+      "venue": "okx",
+      "base": "ETH",
+      "symbol": "ETH-USDT-SWAP",
+      "quote": "USDT",
+      "settle": "USDT",
+      "contract_type": "linear_perpetual",
+      "raw_rate": "0.0000578590268591",
+      "rate_decimal": 5.78590268591e-05,
+      "rate_percent": 0.0057859026859100006,
+      "interval_hours": 8.0,
+      "interval_source": "nextFundingTime_minus_fundingTime",
+      "annualized_percent": 6.33556344107145,
+      "rate_kind": "estimated_upcoming",
+      "source_rate_field": "fundingRate",
+      "source_time": "2026-11-11T15:15:10.861Z",
+      "fetched_at": "2026-11-11T15:15:39.241Z",
+      "funding_time": "2026-11-11T16:00:00.000Z",
+      "funding_time_label": "settlement",
+      "warnings": [],
+      "source_endpoint": "https://www.okx.com/api/v5/public/funding-rate",
+      "raw_response": {
+        "code": "0",
+        "data": [
+          {
+            "formulaType": "withRate",
+            "fundingRate": "0.0000578590268591",
+            "fundingTime": "1794412800000",
+            "impactValue": "20000.0000000000000000",
+            "instId": "ETH-USDT-SWAP",
+            "instType": "SWAP",
+            "interestRate": "0.0001000000000000",
+            "maxFundingRate": "0.0075",
+            "method": "current_period",
+            "minFundingRate": "-0.0075",
+            "nextFundingRate": "",
+            "nextFundingTime": "1794441600000",
+            "premium": "-0.0005035355182032",
+            "prevFundingTime": "1794384000000",
+            "settFundingRate": "0.0000345142419821",
+            "settState": "settled",
+            "ts": "1794410110861"
+          }
+        ],
+        "msg": ""
+      },
+      "raw_interval_metadata": null
+    },
+    {
+      "venue": "bitget",
+      "base": "BTC",
+      "symbol": "BTCUSDT",
+      "quote": "USDT",
+      "settle": "USDT",
+      "contract_type": "linear_perpetual",
+      "raw_rate": "0.000066",
+      "rate_decimal": 6.6e-05,
+      "rate_percent": 0.006600000000000001,
+      "interval_hours": 8.0,
+      "interval_source": "fundingRateInterval_hours",
+      "annualized_percent": 7.227,
+      "rate_kind": "published_current",
+      "source_rate_field": "fundingRate",
+      "source_time": "2026-11-11T15:15:39.406Z",
+      "fetched_at": "2026-11-11T15:15:39.526Z",
+      "funding_time": "2026-11-11T16:00:00.000Z",
+      "funding_time_label": "next_update",
+      "warnings": [],
+      "source_endpoint": "https://api.bitget.com/api/v3/market/current-fund-rate",
+      "raw_response": {
+        "code": "00000",
+        "msg": "success",
+        "requestTime": 1794410139406,
+        "data": [
+          {
+            "symbol": "BTCUSDT",
+            "fundingRate": "0.000066",
+            "fundingRateInterval": "8",
+            "nextUpdate": "1794412800000",
+            "minFundingRate": "-0.003",
+            "maxFundingRate": "0.003",
+            "cashDividend": "",
+            "cashDividendNextUpdate": "null",
+            "lastFundingRate": "0.000087",
+            "nextFundingRate": "0.000066",
+            "baselnterestRate": "0.0001",
+            "impactMarginNotional": "60000"
+          }
+        ]
+      },
+      "raw_interval_metadata": null
+    },
+    {
+      "venue": "bitget",
+      "base": "ETH",
+      "symbol": "ETHUSDT",
+      "quote": "USDT",
+      "settle": "USDT",
+      "contract_type": "linear_perpetual",
+      "raw_rate": "0.000064",
+      "rate_decimal": 6.4e-05,
+      "rate_percent": 0.0063999999999999994,
+      "interval_hours": 8.0,
+      "interval_source": "fundingRateInterval_hours",
+      "annualized_percent": 7.008,
+      "rate_kind": "published_current",
+      "source_rate_field": "fundingRate",
+      "source_time": "2026-11-11T15:15:39.652Z",
+      "fetched_at": "2026-11-11T15:15:39.750Z",
+      "funding_time": "2026-11-11T16:00:00.000Z",
+      "funding_time_label": "next_update",
+      "warnings": [],
+      "source_endpoint": "https://api.bitget.com/api/v3/market/current-fund-rate",
+      "raw_response": {
+        "code": "00000",
+        "msg": "success",
+        "requestTime": 1794410139652,
+        "data": [
+          {
+            "symbol": "ETHUSDT",
+            "fundingRate": "0.000064",
+            "fundingRateInterval": "8",
+            "nextUpdate": "1794412800000",
+            "minFundingRate": "-0.003",
+            "maxFundingRate": "0.003",
+            "cashDividend": "",
+            "cashDividendNextUpdate": "null",
+            "lastFundingRate": "0.000044",
+            "nextFundingRate": "0.000064",
+            "baselnterestRate": "0.0001",
+            "impactMarginNotional": "60000"
+          }
+        ]
+      },
+      "raw_interval_metadata": null
+    }
+  ]
+}
